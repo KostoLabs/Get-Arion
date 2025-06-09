@@ -4,6 +4,9 @@ set -o errexit
 echo "Installing gems..."
 bundle install
 
+echo "Running database migrations..."
+bundle exec rails db:prepare
+
 echo "Clobbering old assets..."
 bundle exec rails assets:clobber
 
