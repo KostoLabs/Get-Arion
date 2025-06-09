@@ -1,0 +1,10 @@
+<%= content_for :page_title, t(".page_title") %>
+
+<%= settings_section title: t(".subscription_title"), subtitle: t(".subscription_subtitle") do %>
+  <%= render "settings/billings/subscription_card", type: :base %>
+<% end %>
+
+<%= settings_section title: t(".subscription_premium_title"), subtitle: t(".subscription_premium_subtitle") do %>
+  <%= render "settings/billings/subscription_card", type: :premium %>
+<% end %>
+

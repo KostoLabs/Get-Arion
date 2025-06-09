@@ -1,0 +1,92 @@
+<%= content_for :header_nav do %>
+  <%= render "imports/nav", import: @import %>
+<% end %>
+
+<%= content_for :previous_path, imports_path %>
+
+<div class="space-y-12">
+  <div class="space-y-4 mx-auto max-w-md">
+    <div class="text-center space-y-2">
+      <h1 class="text-3xl text-primary font-medium"><%= t(".title") %></h1>
+      <p class="text-secondary text-sm"><%= t(".description") %></p>
+    </div>
+
+    <div class="text-center">
+      <%= link_to t(".download_template"), "/csv_templates/Template-csv-import-stocks.csv", class: "btn btn-secondary" %>
+    </div>
+
+
+    <div data-controller="tabs" data-tabs-active-class="bg-white" data-tabs-default-tab-value="csv-upload-tab">
+      <div class="flex justify-center mb-4">
+        <div class="bg-gray-50 rounded-lg inline-flex p-1 space-x-2 text-sm text-primary font-medium">
+          <button type="button" data-id="csv-upload-tab" class="p-2 rounded-lg" data-tabs-target="btn" data-action="click->tabs#select"><%= t(".upload_tab") %></button>
+          <button type="button" data-id="csv-paste-tab" class="p-2 rounded-lg" data-tabs-target="btn" data-action="click->tabs#select"><%= t(".copy_paste_tab") %></button>
+        </div>
+      </div>
+
+      <% ["csv-upload-tab", "csv-paste-tab"].each do |tab| %>
+        <%= tag.div id: tab, data: { tabs_target: "tab" }, class: tab == "csv-paste-tab" ? "hidden" : "" do %>
+          <%= styled_form_with model: @import, scope: :import, url: import_upload_path(@import), multipart: true, class: "space-y-2" do |form| %>
+            <%= form.select :col_sep, Import::SEPARATORS, label: true %>
+            <%= form.date_field :valid_at,
+              required: true,
+              label: t(".valid_at_label"),
+              class: "w-full text-sm text-gray-900 border border-gray-300 rounded-lg" %>
+
+            <% if @import.type == "TransactionImport" || @import.type == "TradeImport" %>
+              <%= form.select :account_id, @import.family.accounts.pluck(:name, :id), { label: t(".account_label"), include_blank: t(".multi_account_option"), selected: @import.account_id } %>
+            <% end %>
+
+            <% if tab == "csv-upload-tab" %>
+              <label for="import_csv_file" class="flex flex-col items-center justify-center w-full h-56 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                  <%= lucide_icon "upload", class: "w-8 h-8 text-secondary mb-2" %>
+                  <p class="text-sm text-gray-500"><%= t(".upload_prompt") %></p>
+                </div>
+
+                <%= form.file_field :csv_file,
+                      class: "hidden",
+                      id: "import_csv_file",
+                      "data-auto-submit-form-target": "auto",
+                      onchange: "document.getElementById('file-chosen').textContent = this.files[0]?.name || '#{t(".no_file_selected")}';" %>
+
+                <p class="mt-2 text-sm text-gray-700" id="file-chosen"><%= t(".no_file_selected") %></p>
+              </label>
+            <% else %>
+              <%= form.text_area :raw_file_str,
+                      rows: 10,
+                      required: true,
+                      placeholder: t(".paste_placeholder"),
+                      "data-auto-submit-form-target": "auto" %>
+            <% end %>
+
+            <%= form.submit t(".submit"), disabled: @import.complete? %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="bg-alpha-black-25 rounded-xl p-1 mt-5 mx-auto max-w-7xl">
+    <div class="text-secondary p-2 mb-2">
+      <div class="flex gap-2 mb-2">
+        <%= lucide_icon("info", class: "w-5 h-5 shrink-0") %>
+        <p class="text-sm"><%= t(".instructions_1") %></p>
+      </div>
+
+      <ul class="list-disc list-inside text-sm pl-8">
+        <li><%= t(".instructions_2") %></li>
+        <li><%= t(".instructions_3") %></li>
+        <li><%= t(".instructions_4") %></li>
+        <li><%= t(".instructions_5") %></li>
+      </ul>
+    </div>
+
+    <%= render partial: "imports/table", locals: {
+      headers: @import.csv_template.headers,
+      rows: @import.csv_template,
+      caption: "imports.sample_caption"
+    } %>
+  </div>
+</div>

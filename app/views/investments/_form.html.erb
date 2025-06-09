@@ -1,0 +1,7 @@
+<%# locals: (account:, url:) %>
+
+<%= render "accounts/form", account: account, url: url do |form| %>
+  <%= form.select :subtype,
+                 Investment::SUBTYPES,
+                 { label: t("accounts.form.subtype_label"), prompt: t(".subtype_prompt"), include_blank: t(".none") } %>
+<% end %>

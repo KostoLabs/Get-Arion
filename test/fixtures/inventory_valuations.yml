@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inventory: one
+  import: one
+  value: 9.99
+  date: 2025-05-07
+
+two:
+  inventory: two
+  import: two
+  value: 9.99
+  date: 2025-05-07

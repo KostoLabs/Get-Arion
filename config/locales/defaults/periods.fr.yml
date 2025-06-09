@@ -1,0 +1,44 @@
+fr:
+  periods:
+    last_day:
+      label: "Dernier jour"
+      label_short: "1J"
+      comparison_label: "vs. hier"
+    current_week:
+      label: "Semaine en cours"
+      label_short: "STC"
+      comparison_label: "vs. début de semaine"
+    last_7_days:
+      label: "7 derniers jours"
+      label_short: "7J"
+      comparison_label: "vs. semaine dernière"
+    current_month:
+      label: "Mois en cours"
+      label_short: "MEC"
+      comparison_label: "vs. début du mois"
+    last_30_days:
+      label: "30 derniers jours"
+      label_short: "30J"
+      comparison_label: "vs. mois dernier"
+    last_90_days:
+      label: "90 derniers jours"
+      label_short: "90J"
+      comparison_label: "vs. trimestre dernier"
+    current_year:
+      label: "Année en cours"
+      label_short: "AEC"
+      comparison_label: "vs. début d'année"
+    last_365_days:
+      label: "365 derniers jours"
+      label_short: "365J"
+      comparison_label: "vs. l'an dernier"
+    last_5_years:
+      label: "5 dernières années"
+      label_short: "5A"
+      comparison_label: "vs. il y a 5 ans"
+    custom:
+      label: "Période personnalisée"
+      label_short: "Perso"
+    interval:
+      day: "1 jour"
+      week: "1 semaine"

@@ -1,0 +1,28 @@
+<% content_for :page_header do %>
+  <div class="space-y-1 mb-6">
+    <h1 class="text-3xl font-medium text-gray-900"><%= t('.welcome', name: Current.user.first_name) %></h1>
+    <p class="text-gray-500"><%= t('.finances_summary') %></p>
+  </div>
+<% end %>
+
+<div class="w-full space-y-6 pb-24">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div class="flex">
+      <%= render partial: "pages/dashboard/coverage_ratio_card", locals: { coverage_ratio: @coverage_ratio } %>
+    </div>
+
+    <div class="bg-white py-4 rounded-xl shadow-border-xs">
+      <%= render partial: "pages/dashboard/net_worth_chart", locals: { series: @balance_sheet.net_worth_series(period: @period), period: @period } %>
+    </div>
+
+  </div>
+
+  <section>
+    <%= render "pages/dashboard/account_allocation_chart" %>
+  </section>
+
+  <section>
+    <%= render "pages/dashboard/balance_sheet", balance_sheet: @balance_sheet %>
+  </section>
+</div>

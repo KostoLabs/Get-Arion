@@ -1,0 +1,46 @@
+<div class="space-y-4">
+  <div class="p-3 shadow-border-xs bg-white rounded-lg flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-gray-25 flex justify-center items-center">
+        <%= lucide_icon "gem", class: "w-5 h-5 text-secondary" %>
+      </div>
+
+      <div class="text-sm space-y-1">
+        <% if (type == :base && @user.family.subscribed_to_base? && !@user.family.subscribed_to_premium?) %>
+          <p class="text-primary"><%= t("settings.billings.show.subscribed_title").html_safe %></p>
+          <p class="text-secondary"><%= t("settings.billings.show.subscribed_subtitle") %></p>
+        <% elsif (type == :premium && @user.family.subscribed_to_premium?) %>
+          <p class="text-primary"><%= t("settings.billings.show.subscribed_premium_title").html_safe %></p>
+          <p class="text-secondary"><%= t("settings.billings.show.subscribed_subtitle") %></p>
+        <% else %>
+          <p class="text-primary"><%= t("settings.billings.show.not_subscribed_title").html_safe %></p>
+          <p class="text-secondary"><%= t("settings.billings.show.not_subscribed_subtitle") %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <% if (type == :base && @user.family.subscribed_to_base? && !@user.family.subscribed_to_premium?) || (type == :premium && @user.family.subscribed_to_premium?) %>
+      <%= link_to subscription_path, class: "btn btn--secondary flex items-center gap-1" do %>
+        <span><%= t("settings.billings.show.manage") %></span>
+        <%= lucide_icon "external-link", class: "w-5 h-5 shrink-0 text-secondary" %>
+      <% end %>
+    <% else %>
+      <% if type == :premium %>
+        <%= link_to upgrade_subscription_path, class: "btn btn--secondary flex items-center gap-1" do %>
+          <span><%= t("settings.billings.show.subscribe") %></span>
+          <%= lucide_icon "external-link", class: "w-5 h-5 shrink-0 text-secondary" %>
+        <% end %>
+      <% else %>
+        <%= link_to new_subscription_path, class: "btn btn--secondary flex items-center gap-1" do %>
+          <span><%= t("settings.billings.show.subscribe") %></span>
+          <%= lucide_icon "external-link", class: "w-5 h-5 shrink-0 text-secondary" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <%= image_tag "stripe-logo.svg", class: "w-5 h-5 shrink-0" %>
+    <p class="text-secondary text-sm"><%= t("settings.billings.show.managed_via_stripe") %></p>
+  </div>
+</div>

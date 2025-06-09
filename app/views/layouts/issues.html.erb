@@ -1,0 +1,15 @@
+<%= render "layouts/shared/htmldoc" do %>
+  <%= drawer do %>
+    <article class="prose">
+      <%= tag.h2 do %>
+        <%= yield :title %>
+      <% end %>
+
+      <%= tag.h3 t(".description_title") %>
+      <%= yield :description %>
+
+      <%= tag.h3 t(".action_title") %>
+      <%= yield :action %>
+    </article>
+  <% end %>
+<% end %>

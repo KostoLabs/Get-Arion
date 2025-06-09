@@ -1,0 +1,2054 @@
+fr:
+  date:
+    formats:
+      long: "%-d %B %Y"
+      day_month_year: "%d %B %Y"
+  address:
+    format: "%{line1}, %{locality}"
+  activemodel:
+    attributes:
+      user:
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'La validation a échoué : %{errors}'
+        restrict_dependent_destroy:
+          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
+            dépendants existent
+          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
+            dépendant(e) existe
+    attributes:
+      user:
+        email: Email
+        family: Famille
+        family_id: Famille
+        first_name: Prénom
+        last_name: Nom
+        password: Mot de passe
+        password_confirmation: Confirmation mot de passe
+    models:
+      upgrader: Metteur à niveau
+      transaction_import: Import de transactions
+      stock_exchange: Bourse
+      account: compte
+      category: Catégorie
+      tag: Étiquette
+      exchange_rate: Taux de change
+      depository: Dépositaire
+      income_statement: Compte de résultat
+      invitation: Invitation
+      tagging: Association d’étiquettes
+      issue: Problème
+      rejected_transfer: Virement rejeté
+      family: Famille
+      transfer: Virement
+      period: Période
+      invite_code: Code d’invitation
+      loan: Prêt
+      financial_liability: Dette personnalisée
+      crypto: Crypto-monnaie
+      balance_sheet: Bilan
+      current: Actif circulant
+      measurement: Mesure
+      vehicle: Véhicule
+      investment: Investissement
+      impersonation_session: Session d’usurpation
+      series: Série
+      session: Session
+      setting: Paramètre
+      impersonation_session_log: Journal des sessions d’usurpation
+      budget_category: Catégorie budgétaire
+      trade_import: Import de transactions boursières
+      mint_import: Import Mint
+      plaid_account: Compte Plaid
+      account_import: Import de compte
+      other_asset: Autre actif
+      budget: Budget
+      other_liability: Autre passif
+      trend: Tendance
+      security: Valeur mobilière
+      # property: Bien immobilier
+      inventory : Stock
+      credit_card: Carte de crédit
+      import: Importation
+      application_record: Enregistrement d’application
+      merchant: Commerçant
+      plaid_item: Élément Plaid
+      address: Adresse
+      sync: Synchronisation
+      user: Utilisateur
+      plaid_investment_sync: Synchronisation des investissements Plaid
+      generator: Générateur
+      totals: Totaux
+      category_stats: Statistiques par catégorie
+      family_stats: Statistiques par famille
+      synth_combobox_option: Option de sélection Synth
+      price: Prix
+      base: Base
+      plaid: Plaid
+      github: GitHub
+      synth: Synth
+      plaid_sandbox: Bac à sable Plaid
+      unknown: Inconnu
+      exchange_rates_missing: Taux de change manquants
+      exchange_rate_provider_missing: Fournisseur de taux de change manquant
+      upgrade: Mise à niveau
+      config: Configuration
+      deployer: Déployeur
+      'null': Vide
+      render: Rendu
+      balance: Solde
+      trade_builder: Générateur de transaction
+      entry_search: Recherche d’écritures
+      balance_trend_calculator: Calculateur de tendance du solde
+      entry: Écriture
+      valuation: Valorisation
+      transaction: Transaction
+      transaction_search: Recherche de transactions
+      holding: Position
+      trade: Transaction boursière
+      data_enricher: Enrichisseur de données
+      reverse_calculator: Calculateur inversé
+      base_calculator: Calculateur de base
+      forward_calculator: Calculateur prospectif
+      sync_cache: Cache de synchronisation
+      syncer: Synchroniseur
+      portfolio_cache: Cache de portefeuille
+      mapping: Correspondance
+      category_mapping: Correspondance de catégories
+      row: Ligne
+      tag_mapping: Correspondance d’étiquettes
+      account_type_mapping: Correspondance de type de compte
+      account_mapping: Correspondance de compte
+      inventory: "Stocks"
+    attributes:
+      upgrader:
+        config: Configuration
+      transaction_import: {}
+      stock_exchange: {}
+      account: {}
+      category:
+        category: Catégorie
+      tag: {}
+      exchange_rate: {}
+      depository: {}
+      income_statement:
+        family: Famille
+      invitation: {}
+      tagging: {}
+      issue: {}
+      rejected_transfer: {}
+      family: {}
+      transfer: {}
+      period:
+        key: Clé
+      invite_code: {}
+      loan: {}
+      crypto: {}
+      balance_sheet:
+        family: Famille
+      current: {}
+      measurement:
+        value: Valeur
+      vehicle: {}
+      investment: {}
+      impersonation_session: {}
+      series:
+        start_date: Date de début
+      session: {}
+      setting: {}
+      impersonation_session_log: {}
+      budget_category:
+        budget_category: Catégorie budgétaire
+      trade_import: {}
+      mint_import: {}
+      plaid_account: {}
+      account_import: {}
+      other_asset: {}
+      budget: {}
+      other_liability: {}
+      trend:
+        current: Actuel
+      security: {}
+      # property: {}
+      inventory: {}
+      credit_card: {}
+      import: {}
+      application_record: {}
+      merchant: {}
+      plaid_item: {}
+      address: {}
+      sync: {}
+      user: {}
+      plaid_investment_sync:
+        plaid_account: Compte Plaid
+        transactions: Transactions
+      generator: {}
+      totals: {}
+      category_stats: {}
+      family_stats: {}
+      synth_combobox_option:
+        symbol: Symbole
+      price: {}
+      base: {}
+      plaid:
+        client: Client
+      github:
+        name: Nom
+      synth:
+        api_key: Clé API
+      plaid_sandbox:
+        client: Client
+      unknown: {}
+      exchange_rates_missing: {}
+      exchange_rate_provider_missing: {}
+      upgrade:
+        type: Type
+      config:
+        env: Environnement
+      deployer: {}
+      'null': {}
+      render: {}
+      balance: {}
+      trade_builder:
+        account: Compte
+        buildable: Élément à construire
+      entry_search: {}
+      balance_trend_calculator:
+        entries: Écritures
+      entry: {}
+      valuation: {}
+      transaction: {}
+      transaction_search: {}
+      holding: {}
+      trade: {}
+      data_enricher:
+        account: Compte
+      reverse_calculator: {}
+      base_calculator:
+        account: Compte
+      forward_calculator: {}
+      sync_cache:
+        account: Compte
+      syncer:
+        account: Compte
+      portfolio_cache:
+        account: Compte
+      mapping: {}
+      category_mapping: {}
+      row: {}
+      tag_mapping: {}
+      account_type_mapping: {}
+      account_mapping: {}
+  sidebar:
+      nav:
+        home: "Accueil"
+        transactions: "Transactions"
+        budgets: "Budgets"
+  categories:
+    names:
+    uncategorized: "Non catégorisé"
+    food_and_drink: "Alimentation"
+    healthcare: "Santé"
+    housing: "Logement"
+    education: "Éducation"
+    shopping: "Achats"
+    gifts_and_donations: "Cadeaux et dons"
+    subscriptions: "Abonnements"
+    entertainment: "Divertissement"
+    insurance: "Assurances"
+    utilities: "Services publics"
+    transportation: "Transport"
+    income: "Revenus"
+  dashboard:
+      welcome: "Bienvenue, %{name}"
+  date:
+    abbr_day_names:
+    - dim
+    - lun
+    - mar
+    - mer
+    - jeu
+    - ven
+    - sam
+    abbr_month_names:
+    -
+    - jan.
+    - fév.
+    - mars
+    - avr.
+    - mai
+    - juin
+    - juil.
+    - août
+    - sept.
+    - oct.
+    - nov.
+    - déc.
+    day_names:
+    - dimanche
+    - lundi
+    - mardi
+    - mercredi
+    - jeudi
+    - vendredi
+    - samedi
+    formats:
+      default: "%d/%m/%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - janvier
+    - février
+    - mars
+    - avril
+    - mai
+    - juin
+    - juillet
+    - août
+    - septembre
+    - octobre
+    - novembre
+    - décembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: environ une heure
+        other: environ %{count} heures
+      about_x_months:
+        one: environ un mois
+        other: environ %{count} mois
+      about_x_years:
+        one: environ un an
+        other: environ %{count} ans
+      almost_x_years:
+        one: presque un an
+        other: presque %{count} ans
+      half_a_minute: une demi-minute
+      less_than_x_minutes:
+        one: moins d'une minute
+        other: moins de %{count} minutes
+        zero: moins d'une minute
+      less_than_x_seconds:
+        one: moins d'une seconde
+        other: moins de %{count} secondes
+        zero: moins d'une seconde
+      over_x_years:
+        one: plus d'un an
+        other: plus de %{count} ans
+      x_days:
+        one: "%{count} jour"
+        other: "%{count} jours"
+      x_minutes:
+        one: "%{count} minute"
+        other: "%{count} minutes"
+      x_months:
+        one: "%{count} mois"
+        other: "%{count} mois"
+      x_seconds:
+        one: "%{count} seconde"
+        other: "%{count} secondes"
+      x_years:
+        one: "%{count} an"
+        other: "%{count} ans"
+    prompts:
+      day: Jour
+      hour: Heure
+      minute: Minute
+      month: Mois
+      second: Seconde
+      year: Année
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: doit être accepté(e)
+      blank: doit être rempli(e)
+      confirmation: ne concorde pas avec %{attribute}
+      empty: doit être rempli(e)
+      equal_to: doit être égal à %{count}
+      even: doit être pair
+      exclusion: n'est pas disponible
+      greater_than: doit être supérieur à %{count}
+      greater_than_or_equal_to: doit être supérieur ou égal à %{count}
+      in: doit être dans l'intervalle %{count}
+      inclusion: n'est pas inclus(e) dans la liste
+      invalid: n'est pas valide
+      less_than: doit être inférieur à %{count}
+      less_than_or_equal_to: doit être inférieur ou égal à %{count}
+      model_invalid: 'Validation échouée : %{errors}'
+      not_a_number: n'est pas un nombre
+      not_an_integer: doit être un nombre entier
+      odd: doit être impair
+      other_than: doit être différent de %{count}
+      present: doit être vide
+      required: doit exister
+      taken: déjà utilisé
+      too_long:
+        one: est trop long (pas plus d'un caractère)
+        other: est trop long (pas plus de %{count} caractères)
+      too_short:
+        one: est trop court (au moins un caractère)
+        other: est trop court (au moins %{count} caractères)
+      wrong_length:
+        one: ne fait pas la bonne longueur (doit comporter un seul caractère)
+        other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
+    template:
+      body: 'Veuillez vérifier les champs suivants : '
+      header:
+        one: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreur'
+        other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
+  helpers:
+    select:
+      prompt: Veuillez sélectionner
+    submit:
+      create: Créer un %{model}
+      submit: Enregistrer ce %{model}
+      update: Modifier ce %{model}
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "€"
+    format:
+      delimiter: " "
+      precision: 3
+      round_mode: default
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: milliard
+          million: million
+          quadrillion: million de milliards
+          thousand: millier
+          trillion: billion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: octet
+            other: octets
+          eb: Eo
+          gb: Go
+          kb: ko
+          mb: Mo
+          pb: Po
+          tb: To
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  shared:
+    missing_value: "--"
+  support:
+    array:
+      last_word_connector: " et "
+      two_words_connector: " et "
+      words_connector: ", "
+  time:
+    am: ""
+    pm: ""
+    formats:
+      default: "%d %B %Y %Hh %Mmin %Ss"
+      long: "%-d %B %Y à %Hh%M"
+      short: "%d %b %Hh%M"
+  breadcrumbs:
+    home: Accueil
+    controllers:
+      depositories: Comptes bancaires
+      profiles: Profil
+      preferences: Préférences
+      securities: Sécurité
+      billings: Abonnements
+      accounts: Comptes
+      imports: Imports
+      tags: Étiquettes
+      categories: Catégories
+      merchants: Commerçants
+      pages: Contact
+      depository: "Comptes bancaire / courant"
+      loans: "Prêts"
+      investments: "Investissements"
+      cryptos: "Cryptos"
+      # properties: "Biens immobiliers"
+      inventories: "Stocks"
+      financial_liabilities: "Dettes personnalisées"
+      vehicles: "Véhicules"
+      other_assets: "Autres actifs"
+      credit_cards: "Cartes de crédit"
+      other_liabilities: "Autres passifs"
+      budgets: "Budgets"
+      transactions: "Transactions"
+      controllers:
+      contacts: "Contact"
+  entries:
+    display_names:
+      initial: "Solde initial"
+      current: "Solde actuel"
+  accountable:
+    types:
+      Inventory: "Stocks"
+  accountable_types:
+    inventory: "Stock"
+    inventories: "Stocks"
+  account:
+    entries:
+      create:
+        success: Entrée ajoutée avec succès
+      empty:
+        title: "Aucune écriture pour le moment"
+        description: "Ajoutez vos premières opérations pour suivre vos mouvements."
+      entry_group:
+        entry_count:
+          one: "%{count} écriture"
+          other: "%{count} écritures"
+      loading:
+        loading: "Chargement des écritures en cours…"
+      selection_bar:
+        selected:
+          one: "%{count} opération sélectionnée"
+          other: "%{count} opérations sélectionnées"
+        delete: "Supprimer la sélection"
+    holdings:
+      cash:
+        brokerage_cash: "Espèces disponibles"
+      holding:
+        per_share: "Par unité"
+        shares:
+          one: "%{qty} unité"
+          other: "%{qty} unités"
+      missing_price_tooltip:
+        missing_data: "Données manquantes"
+        description: "Aucune donnée de prix disponible actuellement pour cet actif. Veuillez réessayer plus tard ou vérifier votre source de données."
+      index:
+        holdings: "Portefeuille"
+        new_holding: "Nouvel achat"
+        name: "Nom"
+        weight: "Répartition"
+        cost: "Coût moyen"
+        return: "Performance"
+      new:
+        coming_soon: "Bientôt disponible..."
+      show:
+        overview: "Détails"
+        ticker_label: "Code mnémonique"
+        current_market_price_label: "Cours actuel"
+        portfolio_weight_label: "Répartition dans le portefeuille"
+        avg_cost_label: "Coût moyen"
+        trend_label: "Performance"
+        unknown: "Inconnu"
+        history: "Historique"
+        trade_history_entry: "%{qty} unité(s) de %{security} à %{price}"
+        settings: "Paramètres"
+        delete_title: "Supprimer cette ligne"
+        delete_subtitle: "Vous pouvez retirer cette ligne du portefeuille."
+        delete: "Supprimer"
+    trades:
+      form:
+        type: "Type de transaction"
+        holding: "Actif"
+        ticker_placeholder: "Recherchez un code mnémonique (ex : AAPL)"
+        manual_ticker_label: "Code mnémonique"
+        manual_ticker_placeholder: "AAPL"
+        amount: "Montant"
+        account: "Compte de destination"
+        account_prompt: "Sélectionner un compte"
+        qty: "Quantité"
+        price: "Prix unitaire"
+        submit: "Enregistrer l'opération"
+      header:
+        buy: "Achat"
+        sell: "Vente"
+        overview: "Détail de l’opération"
+        symbol_label: "Code mnémonique"
+        purchase_qty_label: "Quantité achetée"
+        purchase_price_label: "Prix d’achat"
+        current_market_price_label: "Cours actuel"
+        total_return_label: "Performance non réalisée"
+      new:
+        title: "Nouvelle opération"
+      show:
+        details: "Détails de l'opération"
+        date_label: "Date de l'opération"
+        quantity_label: "Quantité"
+        cost_per_share_label: "Prix unitaire"
+        additional: "Informations complémentaires"
+        note_label: "Note"
+        note_placeholder: "Ajouter une note à cette opération (facultatif)"
+        settings: "Paramètres"
+        exclude_title: "Exclure cette opération"
+        exclude_subtitle: "Elle ne sera pas prise en compte dans le portefeuille."
+        delete_title: "Supprimer l’opération"
+        delete_subtitle: "Cette opération sera définitivement supprimée."
+        delete: "Supprimer"
+        type_buy: "Achat"
+        type_sell: "Vente"
+    transactions:
+      form:
+        expense: "Dépense"
+        income: "Revenu"
+        transfer: "Virement"
+        description: "Description"
+        description_placeholder: "Ex. : Courses, électricité, restaurant…"
+        account_prompt: "Sélectionner un compte"
+        account: "Compte"
+        amount: "Montant"
+        category_prompt: "Choisir une catégorie"
+        category: "Catégorie"
+        date: "Date"
+        submit: "Enregistrer l’opération"
+      header:
+        transfer_icon_title: "Virement détecté"
+      selection_bar:
+        edit: "Modifier la sélection"
+        delete: "Supprimer la sélection"
+      transaction:
+        excluded_income: "Revenu ponctuel (exclu des moyennes)"
+        excluded_expense: "Dépense ponctuelle (exclue des moyennes)"
+      transfer_match:
+        confirmed_payment: "Paiement confirmé"
+        confirmed_transfer: "Virement confirmé"
+        auto_matched: "Appariement automatique"
+        confirm_match: "Confirmer l’appariement"
+        reject_match: "Refuser l’appariement"
+      bulk_edit:
+        title:
+          one: "Modifier 1 opération"
+          other: "Modifier %{count} opérations"
+        selection_bar:
+          one: "1 opération sélectionnée"
+          other: "%{count} opérations sélectionnées"
+        overview: "Résumé"
+        date_label: "Date"
+        details: "Détails"
+        category_label: "Catégorie"
+        category_placeholder: "Choisir une catégorie"
+        merchant_label: "Commerçant"
+        merchant_placeholder: "Choisir un commerçant"
+        note_label: "Note"
+        note_placeholder: "Ajouter une note à toutes les opérations"
+        cancel: "Annuler"
+        save: "Enregistrer"
+      new:
+        new_transaction: "Nouvelle opération"
+      show:
+        overview: "Résumé"
+        name_label: "Description"
+        date_label: "Date"
+        nature: "Nature"
+        amount: "Montant"
+        category_label: "Catégorie"
+        uncategorized: "Non catégorisé"
+        details: "Détails"
+        account_label: "Compte"
+        merchant_label: "Commerçant"
+        none: "Aucun"
+        tags_label: "Étiquettes"
+        note_label: "Note"
+        note_placeholder: "Ajouter une note à cette opération"
+        settings: "Paramètres"
+        excluded_income: "Revenu ponctuel"
+        excluded_expense: "Dépense ponctuelle"
+        excluded_description: "Les opérations ponctuelles sont exclues de certaines analyses pour mieux refléter vos dépenses récurrentes."
+        matcher_title: "Virement ou remboursement ?"
+        matcher_description: "Les virements et remboursements sont des opérations spécifiques représentant un transfert entre deux comptes."
+        open_matcher: "Associer"
+        delete_title: "Supprimer l’opération"
+        delete_subtitle: "Cette opération sera définitivement supprimée."
+        delete: "Supprimer"
+    transfer_matches:
+      matching_fields:
+        instructions: "Choisissez une méthode pour associer vos opérations."
+        match_existing: "Associer une opération existante (recommandé)"
+        create_new: "Créer une nouvelle opération"
+        method_label: "Méthode d'association"
+        existing_transaction_label: "Opération à associer"
+        target_account_label: "Compte cible"
+        no_match_found_text: "Aucune opération à associer trouvée dans vos autres comptes. Veuillez sélectionner un compte, une nouvelle opération de réception sera créée."
+      new:
+        title: "Associer un virement ou un paiement"
+        from_account: "Depuis le compte"
+        from_account_with_name: "Depuis le compte : %{name}"
+        to_account: "Vers le compte"
+        to_account_with_name: "Vers le compte : %{name}"
+        outflow_transaction: "Opération de sortie"
+        inflow_transaction: "Opération d’entrée"
+        submit: "Créer l’association"
+        saving: "Enregistrement en cours…"
+    valuations:
+      form:
+        balance_update_name: "Mise à jour du solde"
+        amount: "Montant"
+        submit: "Enregistrer"
+      header:
+        balance: "Solde"
+      index:
+        valuations: "Valorisations"
+        new_entry: "Nouvelle valorisation"
+        date: "Date"
+        value: "Valeur"
+        change: "Évolution"
+        no_valuations: "Aucune valorisation enregistrée pour le moment."
+      new:
+        title: "Nouvelle valorisation"
+      show:
+        overview: "Vue d’ensemble"
+        name_label: "Nom"
+        name_placeholder: "Ex. : mise à jour manuelle"
+        date_label: "Date"
+        amount: "Montant"
+        details: "Détails"
+        note_label: "Note"
+        note_placeholder: "Ajouter une note (facultatif)"
+        settings: "Paramètres"
+        delete_title: "Supprimer cette valorisation"
+        delete_subtitle: "Cette action est irréversible."
+        delete: "Supprimer"
+  accounts:
+    create:
+      success: "Stock créé avec succès"
+    destroy:
+      success: "Stock supprimé avec succès"
+    update:
+      success: "Le compte a bien été mis à jour."
+    show:
+      tabs:
+        activity: "Activité"
+        overview: "Vue d’ensemble"
+    show:
+      import_account: "Importer un compte"
+      import_inventory: "Importer un stock"
+      activity:
+        title: "Activité du compte"
+        new: "Nouvelle opération"
+        new_balance: "Ajouter un solde"
+        new_transaction: "Ajouter une transaction"
+        no_entries: "Aucune opération enregistrée pour ce compte."
+        entry: "opération"
+        entries: "opérations"
+        date: "Date"
+        amount: "Montant"
+        balance: "Solde"
+      chart:
+        balance: "Solde"
+        owed: "Montant dû"
+        total_value: "Valeur totale"
+        holdings: "Titres détenus"
+        cash: "Liquidités"
+      header:
+        default_title: "Compte %{name}"
+        sync: "Synchroniser le compte"
+      loading:
+        loading: "Chargement du compte en cours..."
+      menu:
+        manage: "Gérer"
+        edit: "Modifier"
+        import: "Importer des opérations"
+        delete: "Supprimer"
+        confirm_title: "Confirmer la suppression"
+        confirm_body_html: "Cette action est irréversible. Toutes les opérations associées à ce compte seront supprimées."
+        confirm_accept: "Supprimer %{name}"
+      tab:
+        activity: "Activité"
+        overview: "Aperçu"
+        holdings: "Titres"
+        valuations: "Valorisations"
+        transactions: "Opérations"
+      template:
+        page_title: "Compte %{name}"
+    account_sidebar_tabs:
+      missing_data_title: "Données historiques manquantes"
+      missing_data_explanation: "Arion utilise l’API Synth pour obtenir les taux de change historiques, les prix des titres, etc. Ces données sont nécessaires pour calculer correctement les soldes des comptes dans le passé."
+      add_api_key_link: "Ajoutez votre clé API Synth ici."
+      assets: "Actifs"
+      debts: "Dettes"
+      all: "Tous"
+      new_asset: "Nouvel actif"
+      new_debt: "Nouvelle dette"
+      new_account: "Nouveau compte"
+      limit_reached_stock: "Limite de stocks atteinte"
+      upgrade_message_or_limit: "Vous avez atteint la limite de 3 stocks avec votre abonnement Premium."
+    account_type:
+      depository:
+        singular: "Compte bancaire / courant"
+      financial_liability:
+        singular: "Dette personnalisée"
+      loan:
+        singular: "Prêt"
+      investment:
+        singular: "Investissement"
+      crypto:
+        singular: "Crypto"
+      # property:
+      #   singular: "Bien immobilier"
+      inventory:
+        singular: "Stock"
+      vehicle:
+        singular: "Véhicule"
+      other_asset:
+        singular: "Autre actif"
+      credit_card:
+        singular: "Carte de crédit"
+      other_liability:
+        singular: "Autre passif"
+    subtypes:
+      checking: "Compte courant"
+      savings: "Compte épargne"
+      brokerage: "Courtier"
+      pension: "Pension"
+      retirement: "Retraite"
+      "401k": "Plan 401(k)"
+      traditional_401k: "401(k) traditionnel"
+      roth_401k: "401(k) Roth"
+      "529_plan": "Plan 529"
+      hsa: "Compte santé (HSA)"
+      mutual_fund: "Fonds commun de placement"
+      traditional_ira: "IRA traditionnel"
+      roth_ira: "IRA Roth"
+      angel: "Investissement angel"
+      single_family_home: "Maison individuelle"
+      multi_family_home: "Maison multifamiliale"
+      condominium: "Condominium"
+      townhouse: "Maison en rangée"
+      investment_property: "Bien d’investissement"
+      second_home: "Résidence secondaire"
+      magasin: "Magasin"
+      entrepot: "Entrepôt"
+      depositaire: "Dépositaire"
+      autre: "Autre"
+    account:
+      deletion_in_progress: "suppression en cours…"
+      has_issues: "Ce compte présente des problèmes"
+      troubleshoot: "Résoudre"
+    accountable_group:
+      new_account: "Ajouter un %{type}"
+      subtypes:
+        savings: "Épargne"
+        checking: "Courant"
+        credit_card: "Carte de crédit"
+    chart_loader:
+      loading: "Chargement du graphique..."
+    empty:
+        no_accounts: "Aucun compte pour l’instant"
+        empty_message: "Ajoutez un compte pour commencer à suivre vos finances."
+        new_account: "Nouveau compte"
+    form:
+      name_label: "Nom du compte"
+      name_placeholder: "Renseigner un nom de compte"
+      balance: "Solde"
+      subtype_label: "Entreposage"
+      subtype_prompt: "Sélectionner un entreposage"
+      none: "Aucun"
+    summary_card:
+        total_income: "Revenus totaux"
+        total_expense: "Dépenses totales"
+        net_worth: "Valeur nette"
+    chart:
+      no_change: "Aucune variation"
+      no_data: "Aucune donnée disponible pour la période sélectionnée."
+    index:
+      accounts: "Comptes"
+      sync: "Synchroniser"
+      new_account: "Nouveau compte"
+      manual_accounts:
+        other_accounts: "Tous les comptes"
+    new:
+      title: "Quel type de compte voulez-vous créer ?"
+      import_accounts: "Importer des comptes"
+      depository:
+        singular: "Compte courant"
+      investment:
+        singular: "Compte d'investissement"
+      crypto:
+        singular: "Portefeuille crypto"
+      # property:
+      #   singular: "Bien immobilier"
+      inventory:
+        singular: "Stock"
+      vehicle:
+        singular: "Véhicule"
+      credit_card:
+        singular: "Carte de crédit"
+      financial_liability:
+        singular: "Dette personnalisée"
+      loan:
+        singular: "Prêt"
+      other_asset:
+        singular: "Autre actif"
+      other_liability:
+        singular: "Autre passif"
+      container:
+        select: "Sélectionner"
+        navigate: "Naviguer"
+        close: "Fermer"
+        previous: "Précédent"
+        next: "Suivant"
+      import_accounts: "Importer des comptes"
+      import_inventories: "Importer des stocks"
+    sparkline:
+      no_trend: "Aucune tendance"
+  budget_categories:
+    allocation_progress:
+      over_set: "> 100 % alloué"
+      percent_set: "%{percent} alloué"
+      over_budget_html: "Dépassement de budget de %{amount}"
+      left_to_allocate: "à allouer"
+    budget_category_form:
+      monthly_average: "%{amount}/mois en moyenne"
+    budget_category:
+      over: "%{amount} au-dessus"
+      left: "%{amount} restant"
+      average: "%{amount} en moyenne"
+      from_budget: "sur %{amount} alloué"
+    confirm_button:
+      confirm: "Valider"
+    no_categories:
+      title: "Oups !"
+      description: "Vous n'avez pas encore créé ou assigné de catégories de dépenses à vos opérations."
+      use_defaults: "Utiliser les catégories par défaut"
+      new_category: "Nouvelle catégorie"
+    uncategorized_budget_category_form:
+      monthly_avg: "%{amount}/mois en moyenne"
+    index:
+      title: "Modifiez vos budgets par catégorie"
+      intro: "Ajustez les budgets de chaque catégorie pour définir des plafonds de dépenses. Les fonds non alloués seront automatiquement affectés à la catégorie non catégorisée."
+    show:
+      period_spending: "Dépenses de %{date}"
+      category: "Catégorie"
+      overview: "Vue d’ensemble"
+      status: "Statut"
+      overspent: "dépassement"
+      left: "restant"
+      budgeted: "Budget prévu"
+      monthly_average_spending: "Dépense moyenne mensuelle"
+      monthly_median_spending: "Dépense médiane mensuelle"
+      recent_transactions: "Transactions récentes"
+      no_transactions: "Aucune transaction trouvée pour cette période budgétaire."
+      period_spending: "Dépenses de %{date}"
+  budgets:
+    budgeted_summary:
+      expected_income: "Revenus attendus"
+      earned: "%{amount} reçus"
+      over: "%{amount} en plus"
+      left: "%{amount} restants"
+      budgeted: "Budgeté"
+      spent: "%{amount} dépensés"
+    actuals_summary:
+      income: "Revenus"
+      expenses: "Dépenses"
+    budget_categories:
+        categories: "Catégories"
+        amount: "Montant"
+    budget_donut:
+      spent: "Dépensé"
+      of_amount: "sur %{amount}"
+      new_budget: "Nouveau budget"
+      unused: "Non utilisé"
+    budget_header:
+      today: "Aujourd'hui"
+    budget_nav:
+      setup: "Préparation"
+      categories: "Catégories"
+    budget_summary:
+      expected_income: "Revenu attendu"
+      budgeted: "Budgété"
+      earned: "%{amount} reçu"
+      spent: "%{amount} dépensé"
+      over: "%{amount} en dépassement"
+      left: "%{amount} restants"
+    over_allocation_warning:
+      warning_message: "Vous avez sur-alloué votre budget. Veuillez corriger vos allocations."
+      fix_button: "Corriger les allocations"
+    edit:
+      title: "Configurez votre budget"
+      subtitle: "Saisissez vos revenus mensuels et vos dépenses prévues pour configurer votre budget."
+      budgeted_spending_label: "Dépenses prévues"
+      expected_income_label: "Revenus attendus"
+      autosuggest_title: "Suggérer automatiquement revenus & dépenses"
+      autosuggest_subtitle: "Basé sur l’historique des transactions. Vérifiez les montants proposés avant de continuer."
+      submit: "Continuer"
+    show:
+      tab_budgeted: "Prévisionnel"
+      tab_actual: "Réel"
+      categories: "Catégories"
+      edit: "Modifier"
+  categories:
+    badge:
+      groceries: "Courses"
+      transport: "Transport"
+      rent: "Loyer"
+      salary: "Salaire"
+      entertainment: "Divertissement"
+      uncategorized: "Non catégorisé"
+    category_list_group:
+      title: "Catégories"
+    category:
+      edit: "Modifier"
+      delete: "Supprimer"
+    form:
+      color_label: "Couleur"
+      poor_contrast: "Contraste insuffisant, choisissez une couleur plus foncée ou"
+      auto_adjust: "ajuster automatiquement"
+      icon_label: "Icône"
+      income: "Revenu"
+      expense: "Dépense"
+      classification_label: "Classification"
+      name_label: "Nom"
+      placeholder: "Nom de la catégorie"
+      unassigned: "(non assignée)"
+      parent_category_label: "Catégorie parente (optionnel)"
+    menu:
+      loading: "Chargement en cours..."
+    edit:
+      edit: "Modifier la catégorie"
+    index:
+      categories: "Catégories"
+      new: "Nouvelle catégorie"
+      categories_incomes: "Catégories de revenus"
+      categories_expenses: "Catégories de dépenses"
+      empty: "Aucune catégorie trouvée pour le moment."
+      bootstrap: "Utiliser les catégories par défaut"
+    new:
+      new_category: "Nouvelle catégorie"
+    bootstrap:
+      success: "Les catégories par défaut ont été ajoutées avec succès."
+    names:
+      education: "Éducation"
+      entertainment: "Divertissement"
+      food_drink: "Alimentation"
+      gifts_donations: "Cadeaux et dons"
+      healthcare: "Santé"
+      housing: "Logement"
+      insurance: "Assurances"
+      shopping: "Achats"
+      subscriptions: "Abonnements"
+      transportation: "Transport"
+      utilities: "Services publics"
+      income: "Revenu"
+      uncategorized: "Non catégorisé"
+  category:
+    deletions:
+      new:
+        delete_category: "Supprimer la catégorie"
+        explanation: "Que souhaitez-vous faire des opérations associées à %{category_name} ?"
+        delete_and_leave_uncategorized: "Supprimer %{category_name} et laisser les opérations non catégorisées"
+        delete_and_recategorize: "Supprimer %{category_name} et réaffecter les opérations"
+        replacement_category_prompt: "Sélectionnez une nouvelle catégorie"
+        category: "Catégorie de remplacement"
+    dropdowns:
+      row:
+        edit: "Modifier"
+        delete: "Supprimer"
+      show:
+        search_placeholder: "Rechercher une catégorie"
+        no_categories: "Aucune catégorie ne correspond à votre recherche."
+        empty: "Aucune catégorie n’a encore été créée ou assignée."
+        bootstrap: "Utiliser les catégories par défaut"
+        clear: "Effacer la catégorie"
+        match_transfer: "Apparier un virement/paiement"
+        one_time_income: "Revenu ponctuel"
+        one_time_expense: "Dépense ponctuelle"
+  credit_cards:
+    form:
+      available_credit: "Crédit disponible"
+      available_credit_placeholder: "Ex. : 2000"
+      minimum_payment: "Paiement minimum"
+      minimum_payment_placeholder: "Ex. : 50"
+      apr: "Taux annuel effectif global (TAEG)"
+      apr_placeholder: "Ex. : 19.99"
+      expiration_date: "Date d’expiration"
+      annual_fee: "Frais annuels"
+      annual_fee_placeholder: "Ex. : 30"
+    overview:
+      amount_owed: "Montant dû"
+      available_credit: "Crédit disponible"
+      minimum_payment: "Paiement minimum"
+      apr: "TAEG"
+      expiration_date: "Date d’expiration"
+      annual_fee: "Frais annuels"
+      unknown: "Inconnu"
+      edit_account: "Modifier les détails du compte"
+    edit:
+      edit: "Modifier %{account}"
+    new:
+      title: "Nouvelle carte de crédit"
+  cryptos:
+    edit:
+      edit: "Modifier le compte %{account}"
+    new:
+      title: "Ajouter un compte crypto"
+  depositories:
+    form:
+      subtype_prompt: "Sélectionner un sous-type"
+      none: "Aucun"
+    subtypes:
+      checking: "Compte courant"
+      savings: "Compte épargne"
+    edit:
+      edit: "Modifier %{account}"
+    new:
+      title: "Ajouter un compte bancaire"
+  email_confirmation_mailer:
+    confirmation_email:
+      greeting: "Bienvenue sur Arion !"
+      body: "Cliquez sur le bouton ci-dessous pour confirmer votre adresse email."
+      cta: "Lien de confirmation"
+      expiry_notice: "Ce lien expirera dans %{hours} heures."
+  impersonation_sessions:
+    approval_bar:
+      access_label: "Accès %{status}"
+      session: "session"
+      request: "demande"
+      pending_explanation: "Un membre de l’équipe de support a demandé un accès à votre compte (probablement pour vous aider). Si vous acceptez, toutes ses actions seront enregistrées à des fins de sécurité et d’audit."
+      approve: "Autoriser"
+      reject: "Refuser"
+      in_progress_explanation: "Un membre de l’équipe Arion consulte actuellement vos données. Vous pouvez mettre fin à la session à tout moment."
+      end_session: "Mettre fin à la session"
+      error: "Une erreur est survenue. Veuillez nous contacter."
+    super_admin_bar:
+      super_admin: "Super Admin"
+      jobs: "Jobs"
+      impersonating_html: "Imite : %{email}"
+      leave: "Quitter"
+      terminate: "Terminer"
+      join_prompt: "Rejoindre une session"
+      join: "Rejoindre"
+      uuid_placeholder: "UUID"
+      request_impersonation: "Demander l’imitation"
+  import:
+    cleans:
+      show:
+        title: "Nettoyage des données"
+        description: "Vérifiez et corrigez les lignes avant de poursuivre l'import."
+        cleaned_notice: "Vos données ont été nettoyées"
+        next_step: "Étape suivante"
+        errors_notice: "Certaines lignes doivent être corrigées avant de continuer"
+        all_rows: "Toutes les lignes"
+        error_rows: "Lignes avec erreur"
+    configurations:
+      inventory_import:
+        leave_empty: "Laisser vide"
+      account_import:
+        leave_empty: "Laisser vide"
+        entity_type: "Type d'entité"
+        name_optional: "Nom (optionnel)"
+        balance: "Solde"
+        currency: "Devise"
+        apply_configuration: "Appliquer la configuration"
+      mint_import:
+        notice: "Nous avons préconfiguré votre import Mint. Veuillez passer à l'étape suivante."
+        leave_empty: "Laisser vide"
+        date: "Date"
+        date_format_label: "Format de date"
+        amount: "Montant"
+        signage_convention: "Convention de signes"
+        incomes_negative: "Les revenus sont négatifs"
+        incomes_positive: "Les revenus sont positifs"
+        currency: "Devise"
+        number_format: "Format numérique"
+        select_format: "Sélectionner un format"
+        account_optional: "Compte (optionnel)"
+        name_optional: "Nom (optionnel)"
+        category_optional: "Catégorie (optionnel)"
+        tags_optional: "Étiquettes (optionnel)"
+        apply_configuration: "Appliquer la configuration"
+      trade_import:
+        leave_empty: "Laisser vide"
+        date: "Date"
+        date_format_label: "Format de date"
+        quantity: "Quantité"
+        positive_qty: "Les achats ont une quantité positive"
+        negative_qty: "Les achats ont une quantité négative"
+        signage_convention: "Convention de signes"
+        currency: "Devise"
+        format: "Format"
+        select_format: "Sélectionner un format"
+        ticker: "Ticker"
+        exchange_mic: "MIC de l'échange"
+        price: "Prix"
+        account_optional: "Compte (optionnel)"
+        name_optional: "Nom (optionnel)"
+        note: "Remarque :"
+        provider_warning: "Le fournisseur de prix des titres n’est pas configuré. Vos imports de transactions fonctionneront, mais Arion ne pourra pas remplir l’historique des prix. Veuillez configurer cela dans vos paramètres."
+        apply_configuration: "Appliquer la configuration"
+      transactions_import:
+        leave_empty: Laisser vide
+        date: Date
+        date_format_label: Format de date
+        amount: Montant
+        signage_convention: Convention de signe
+        incomes_positive: Les revenus sont positifs
+        incomes_negative: Les revenus sont négatifs
+        currency: Devise
+        format: Format
+        select_format: Sélectionner un format
+        account_optional: Compte (optionnel)
+        name_optional: Nom (optionnel)
+        category_optional: Catégorie (optionnelle)
+        tags_optional: Étiquettes (optionnelles)
+        notes_optional: Notes (optionnelles)
+        apply_configuration: Appliquer la configuration
+      show :
+        title: Configurer l’import
+        description: Associez les colonnes de votre fichier CSV aux champs de l’application pour continuer.
+        template_found: Modèle de configuration trouvé
+        template_description: Nous avons trouvé une configuration issue d’un import précédent pour ce compte. Souhaitez-vous l’appliquer ?
+        apply_template: Appliquer le modèle
+        manually_configure: Configurer manuellement
+        sample_caption: Aperçu des données de votre fichier CSV
+    confirms:
+      mappings:
+        no_accounts: Aucun compte n'est encore lié à cet import. Veuillez en créer un pour continuer.
+        unassigned_account: Certaines lignes de votre fichier n’ont pas de compte attribué.
+        create_account: Créer un compte
+        csv_mapping_label: Colonne CSV - %{mapping}
+        maybe_mapping_label: Interprétation - %{mapping}
+        rows_label: Lignes concernées
+        next: Suivant
+      show:
+        inventory_mapping_title: "Correspondance des stocks"
+        inventory_mapping_description: "Assignez chaque article importé à un stock existant pour finaliser la valorisation."
+        account_mapping_title: Assignez les comptes à votre import %{import_type}
+        account_mapping_description: Reliez chaque ligne de votre fichier à un compte existant ou créez-en un nouveau.
+
+        category_mapping_title: Assignez les catégories à votre import %{import_type}
+        category_mapping_description: Associez vos données importées aux catégories correspondantes pour une analyse plus précise.
+
+        security_mapping_title: Assignez les titres financiers à votre import %{import_type}
+        security_mapping_description: Associez vos lignes à des titres existants ou nouveaux pour suivre correctement vos investissements.
+    mappings:
+      form:
+        unassigned: "(non assigné)"
+    rows:
+      form:
+        row_error: "Erreur : %{messages}"
+    uploads:
+      show:
+        upload_prompt: "Cliquez ici pour choisir un fichier CSV"
+        no_file_selected: "Aucun fichier choisi"
+        valid_at_label: "Date de validité"
+        download_template: "Télécharger le modèle CSV"
+        title: "Importer un fichier CSV"
+        description: "Vous pouvez coller les données ou importer un fichier."
+        copy_paste_tab: "Copier / Coller"
+        upload_tab: "Charger un fichier CSV"
+        account_label: "Compte (optionnel)"
+        multi_account_option: "Import multi-comptes"
+        paste_placeholder: "Collez ici le contenu de votre fichier CSV"
+        submit: "Importer le CSV"
+        instructions_1: "Voici un aperçu du fichier que vous allez importer."
+        instructions_2: "Les en-têtes doivent correspondre aux colonnes attendues."
+        instructions_3: "Les montants doivent être formatés correctement."
+        instructions_4: "La première ligne doit contenir les noms de colonnes."
+        instructions_5: "Assurez-vous que le séparateur sélectionné est correct."
+  imports:
+    configurations:
+      submit: "Appliquer la configuration"
+    empty:
+      message: "Aucun import trouvé."
+      new: "Nouvel import"
+    failure:
+      title: "Échec de l'importation"
+      description: "Veuillez vérifier le format de votre fichier, corriger les éventuelles erreurs et vous assurer que tous les champs requis sont remplis, puis réessayez."
+      retry: "Réessayer"
+    import:
+      label: "%{type} fait le %{datetime}"
+      in_progress: "En cours"
+      uploading: "Téléversement"
+      failed: "Échec"
+      reverting: "Annulation en cours"
+      revert_failed: "Échec de l'annulation"
+      complete: "Terminé"
+      view: "Voir"
+      revert: "Annuler"
+      delete: "Supprimer"
+    importing:
+      title: "Importation en cours"
+      description: "Votre importation est en cours. Consultez le menu des importations pour suivre l'état ou cliquez sur « Vérifier le statut » pour rafraîchir la page. Vous pouvez continuer à utiliser l'application."
+      check_status: "Vérifier le statut"
+      back_to_dashboard: "Retour au tableau de bord"
+    nav:
+      steps:
+        upload: "Import"
+        configure: "Configuration"
+        clean: "Nettoyage"
+        map: "Correspondance"
+        confirm: "Confirmation"
+    ready:
+      title: "Résumé de l'import"
+      description: "Voici un aperçu de ce qui sera ajouté dans votre espace."
+      item: "Élément"
+      count: "Quantité"
+      publish: "Publier l'import"
+      resources:
+        accounts: "Comptes"
+        transactions: "Transactions"
+        categories: "Catégories"
+        tags: "Étiquettes"
+    revert_failure:
+      title: "Échec de l'annulation de l'import"
+      description: "Veuillez réessayer ou contacter le support."
+      try_again: "Réessayer"
+    success:
+      title: "Import réussi"
+      description: "Vos données ont été ajoutées avec succès à l’application et sont prêtes à être utilisées."
+      back_to_dashboard: "Retour au tableau de bord"
+    sample_caption: "Extrait de vos données CSV importées"
+    index:
+      title: "Imports"
+      new: "Nouvel import"
+      imports: "Imports"
+      subscription_required: "Vous devez être abonné à Arion+ pour importer des stocks."
+    new:
+      title: "Nouvel import"
+      description: "Choisissez le type de données à importer dans Arion."
+      sources: "Sources"
+      resume: "Reprendre l'%{type}"
+      import_transactions: "Importer des transactions"
+      import_portfolio: "Importer un portefeuille"
+      import_accounts: "Importer des comptes"
+      import_inventory: "Importer des stocks"
+    types:
+      InventoryImport: "Import de stocks"
+      AccountImport: "Import de comptes"
+      TransactionImport: "Import de transactions"
+      TradeImport: "Import de portefeuilles"
+      mint_import: "Import Mint"
+  investments:
+    form:
+      subtype_label: "Type d'investissement"
+      subtype_prompt: "Sélectionnez un type"
+      none: "Aucun"
+    value_tooltip:
+      total_value_tooltip: "Valeur totale de votre portefeuille"
+      cash: "Espèces"
+      holdings: "Investissements"
+      total: "Total"
+    edit:
+      edit: "Modifier %{account}"
+    new:
+      title: "Nouveau compte d’investissement"
+    show:
+      chart_title: "Valeur du portefeuille"
+  invitation_mailer:
+    invite_email:
+      greeting: "Vous êtes invité·e !"
+      body: "%{inviter} vous a invité·e à rejoindre la famille « %{family} » sur Arion. Cliquez sur le bouton ci-dessous pour accepter l’invitation."
+      accept_button: "Accepter l'invitation"
+      expiry_notice: "Ce lien expirera dans %{days} jours."
+  invitations:
+    new:
+      title: "Inviter un membre"
+      subtitle: "Ajoutez une personne à votre famille"
+      email_label: "Adresse e-mail"
+      email_placeholder: "ex. nom@example.com"
+      role_label: "Rôle"
+      role_member: "Membre"
+      role_admin: "Administrateur"
+      submit: "Envoyer l’invitation"
+  invite_codes:
+    index:
+      no_invite_codes: "Aucun code d'invitation disponible."
+      invite_code_description: "Les membres peuvent rejoindre votre espace en utilisant un code d'invitation unique que vous pouvez partager."
+  issue:
+    exchange_rate_provider_missings:
+      show:
+        title: "%{name}"
+        description:
+          family_currency: "Vous avez défini la devise de votre espace comme %{currency}."
+          other_currency: "%{name} contient des écritures dans une autre devise, ce qui nécessite l'utilisation d'un fournisseur de taux de change pour afficher correctement les résultats historiques."
+          provider_missing: "Nous avons détecté que votre fournisseur de taux de change n'est pas encore configuré."
+        action:
+          api_required: "Pour résoudre ce problème, vous devez fournir une clé API pour votre fournisseur de taux de change."
+          synth_intro: "Actuellement, nous prenons en charge"
+          synth_explanation: ", vous pouvez obtenir une clé API gratuite via le lien fourni."
+          paste_key: "Une fois la clé obtenue, collez-la ci-dessous pour la configurer."
+          contact_team: "Veuillez contacter l’équipe Arion."
+        form:
+          label: "Clé API Synth"
+          placeholder: "Clé API Synth"
+          submit: "Enregistrer et re-synchroniser le compte"
+    exchange_rates_missings:
+      show:
+        title: "%{name}"
+        description:
+          missing_rates: "Des taux de change sont manquants pour ce compte."
+    prices_missings:
+      show:
+        title: "%{name}"
+        description:
+          missing_prices: "Des cours de titres sont manquants pour ce compte."
+    unknowns:
+      show:
+        title: "%{name}"
+        description:
+          unknown_issue: "Une erreur inconnue est survenue."
+          no_data: "Aucune donnée fournie pour ce problème"
+        action:
+          no_fix: "Il n’existe pas encore de correctif pour ce problème."
+          feedback_intro: "Arion est en développement actif et nous apprécions vos retours. Vous pouvez nous aider à améliorer Arion en signalant ce problème de l’une des manières suivantes :"
+          discord_html: "Publiez un message sur notre %{link}"
+          github_html: "Ouvrez une issue sur notre %{link}"
+          include_data: "Si des données apparaissent dans le bloc ci-dessus et vous semblent utiles, veuillez les inclure dans votre rapport."
+    request_synth_data_action:
+      data_not_found: "Le fournisseur de données Synth n’a pas pu trouver les données demandées."
+      help_us_improve: "Nous développons activement Synth pour en faire un fournisseur de données facile à utiliser et peu coûteux. Vous pouvez nous aider à l’améliorer en demandant les données dont vous avez besoin."
+      join_discord_html: "Merci de poster un message sur notre %{link} avec les informations suivantes :"
+      questions:
+        missing_data_type: "Quel type de données est manquant ?"
+        additional_info: "Toute autre information qui pourrait être utile"
+  issues:
+    issue:
+      troubleshoot: "Résoudre le problème"
+  layouts:
+    shared:
+      footer:
+        privacy_policy: "Politique de confidentialité"
+        terms_of_service: "Conditions d'utilisation"
+    auth:
+      your_account: "Votre compte"
+      no_account: "Pas encore de compte ?"
+      sign_up: "Créer un compte"
+      existing_account: "Déjà inscrit(e) ?"
+      sign_in: "Se connecter"
+    issues:
+      description_title: "Description du problème"
+      action_title: "Comment résoudre ce problème"
+  financial_liabilities:
+    new:
+      title: "Nouvelle dette personnalisée"
+    edit:
+      edit: "Modifier %{account}"
+    form:
+      name_label: "Nom du compte"
+      name_placeholder: "Renseignez un nom de compte"
+      balance: "Solde"
+      lending_type: "Type de prêt"
+      lending_type_options:
+        overdraft: "Découvert"
+        obligation: "Obligation"
+        convertible: "Obligation convertible"
+        note: "Note de crédit"
+        classic_loan: "Prêt classique"
+        term_loan: "Prêt à terme"
+      lending_rate: "Taux d’intérêt (en %)"
+      lending_rate_type: "Type de taux"
+      lending_start: "Date de début"
+      lending_start_placeholder: "jj/mm/aaaa"
+      lending_close: "Date de clôture"
+      lending_close_placeholder: "jj/mm/aaaa"
+      lenders: "Prêteurs"
+      collateral: "Collateral"
+      haircut: "Clause d'arrosage (en %)"
+      rate_type_options:
+        fixed: "Fixe"
+        variable: "Variable"
+      collateral_options:
+        none: "Aucun"
+        real_estate: "Immobilier"
+        inventory: "Stock"
+        stocks: "Actions"
+        materials: "Matériel"
+        invoices: "Factures"
+      collateral_floor: "Collateral Floor"
+    overview:
+      original_principal: "Capital initial"
+      remaining_principal: "Capital restant dû"
+      interest_rate: "Taux d’intérêt"
+      collateral: "Collateral"
+      none: "Aucun"
+      haircut: "Clause d'arosage"
+      type: "Type de dette"
+      unknown: "Inconnu"
+      edit_details: "Modifier les détails"
+      collateral_floor: "Collateral Floor"
+  loans:
+    form:
+      interest_rate: "Taux d’intérêt"
+      interest_rate_placeholder: "Ex. : 2.5"
+      rate_type: "Type de taux"
+      term_months: "Durée (en mois)"
+      term_months_placeholder: "Ex. : 240"
+      rate_type_options:
+        fixed: "Fixe"
+        variable: "Variable"
+        adjustable: "Révisable"
+    overview:
+      original_principal: "Capital initial"
+      remaining_principal: "Capital restant dû"
+      interest_rate: "Taux d’intérêt"
+      monthly_payment: "Paiement mensuel"
+      not_applicable: "Non applicable"
+      term: "Durée"
+      type: "Type"
+      unknown: "Inconnu"
+      edit_loan_details: "Modifier les détails du prêt"
+    edit:
+      edit: "Modifier %{account}"
+    new:
+      title: "Nouveau prêt"
+  merchants:
+    form:
+      name_placeholder: "Nom du commerçant"
+    merchant:
+      edit: "Modifier"
+      delete: "Supprimer"
+      confirm_title: "Supprimer ce commerçant ?"
+      confirm_body: "Ce commerçant est associé à des transactions. Êtes-vous sûre de vouloir le supprimer ?"
+      confirm_accept: "Supprimer le commerçant"
+    edit:
+      title: "Modifier le commerçant"
+    index:
+      title: "Commerçants"
+      new: "Nouveau commerçant"
+      empty: "Aucun commerçant enregistré pour l’instant."
+    new:
+      title: "Ajouter un commerçant"
+  mfa:
+    backup_codes:
+      title: "Codes de secours"
+      description: "Conservez ces codes dans un endroit sûr. Vous pouvez les utiliser pour vous connecter si vous perdez l’accès à votre appareil."
+      page_title: "Vos codes de secours"
+      backup_codes_title: "Codes de secours"
+      backup_codes_description: "Ces codes peuvent être utilisés si vous perdez l’accès à votre application d’authentification."
+      continue: "Continuer"
+    new:
+      title: "Activer l’authentification à deux facteurs"
+      description: "Scannez le code QR avec votre application d’authentification pour configurer votre 2FA."
+      page_title: "Configurer 2FA"
+      scan_title: "Scannez le code QR"
+      scan_description: "Utilisez une application comme Google Authenticator, 1Password ou Authy pour scanner ce code QR."
+      secret_title: "Clé secrète"
+      secret_description: "Vous pouvez aussi entrer cette clé manuellement dans votre application si nécessaire."
+      verify_title: "Vérification"
+      verify_description: "Entrez le code généré par votre application d’authentification pour activer le 2FA."
+      code_label: "Code de vérification"
+      code_placeholder: "Ex. : 123456"
+      verify_button: "Vérifier et activer"
+    verify:
+      title: "Vérification du code 2FA"
+      description: "Entrez le code de sécurité généré par votre application d’authentification."
+      page_title: "Code de vérification"
+      verify_button: "Vérifier"
+  onboardings:
+    header:
+      sign_out: "Se déconnecter"
+    preferences:
+      title: "Préférences"
+      subtitle: "Personnalisez votre expérience en sélectionnant la langue, la devise et le format de date."
+      example: "Exemple de présentation de votre portefeuille :"
+      preview: "Aperçu du rendu selon vos préférences"
+      locale: "Langue"
+      currency: "Devise"
+      date_format: "Format de date"
+      submit: "Continuer"
+    profile:
+      title: "Créer votre profil"
+      subtitle: "Dites-nous qui vous êtes pour personnaliser votre expérience."
+      profile_image: "Image de profil (optionnelle)"
+      first_name: "Prénom"
+      last_name: "Nom"
+      household_name: "Nom de l'entreprise"
+      country: "Pays"
+      submit: "Continuer"
+    show:
+      title: "Bienvenue sur Arion"
+      message: "Commençons par configurer votre compte."
+      setup: "Configurer mon profil"
+  other_assets:
+    edit:
+      edit: "Modifier %{account}"
+    new:
+      title: "Nouvel actif"
+  other_liabilities:
+    edit:
+      edit: "Modifier %{account}"
+    new:
+      title: "Nouvelle dette"
+  pages:
+    changelog:
+      title: "Journal des modifications"
+    dashboard:
+      welcome: "Bienvenue, %{name} !"
+      finances_summary: "Voici un aperçu de vos finances"
+      no_account_empty_state:
+        no_account_title: "Aucun compte ajouté"
+        no_account_subtitle: "Ajoutez un compte pour commencer à suivre vos finances."
+        new_account: "Nouveau compte"
+      account_allocation_chart:
+        title: "Répartition des comptes"
+        assets: "Actifs"
+        debts: "Dettes"
+      total: "Total"
+    early_access:
+      title: "Accès anticipé à Arion"
+      with_invites:
+        title: "Accès anticipé à Arion"
+        remaining_invites:
+          one: "Il reste <strong>1</strong> code d’invitation."
+          other: "Il reste <strong>%{count}</strong> codes d’invitation."
+        your_code: "Votre code d’invitation est %{code}"
+        sign_up_button: "Créer un compte avec ce code"
+        refresh_note: "Vous devrez peut-être actualiser la page si quelqu’un d’autre utilise ce code avant vous."
+        refresh_button: "Actualiser la page"
+      no_invites:
+        message: "Désolé, il ne reste <strong>aucun code d’invitation</strong>. Rejoignez notre %{discord_link} pour être informé(e) des nouveaux codes disponibles."
+        join_discord: "Rejoindre le serveur Discord"
+      footer: "©2025 Arion, Inc."
+    feedback:
+      title: "Retour d’expérience"
+      leave_feedback: "Laissez votre retour"
+      description: "Faites-nous part de vos retours, n'hésitez pas à inclure des liens vers des vidéos ou captures d’écran."
+      feature_request: "Suggérer une fonctionnalité"
+      bug_report: "Signaler un bug"
+      discuss: "Discuter d'Arion avec la communauté"
+  password_mailer:
+    password_reset:
+      request_made: "Vous avez demandé la réinitialisation de votre mot de passe."
+      cta: "Cliquez ici pour réinitialiser votre mot de passe"
+      ignore_if_not_requested: "Si vous n'avez pas fait cette demande, ignorez ce message."
+  password_resets:
+    edit:
+      title: "Réinitialiser votre mot de passe"
+    new:
+      title: "Mot de passe oublié ?"
+      requested: "Si une adresse valide a été trouvée, un e-mail vient de vous être envoyé."
+      submit: "Envoyer le lien de réinitialisation"
+  passwords:
+    edit:
+      title: "Modifier mon mot de passe"
+      password_challenge: "Mot de passe actuel"
+      password: "Nouveau mot de passe"
+      submit: "Mettre à jour mon mot de passe"
+  plaid_items:
+    plaid_item:
+      syncing: "Synchronisation en cours..."
+      requires_update: "Connexion à renouveler"
+      error: "Erreur lors de la synchronisation"
+      status: "Dernière synchronisation : il y a %{timestamp}"
+      status_never: "Aucune synchronisation effectuée"
+      update: "Mettre à jour"
+      connection_lost: "Connexion perdue"
+      connection_lost_description: "Nous n'avons pas pu rétablir la connexion avec cette banque. Vous pouvez la supprimer ou en ajouter une nouvelle."
+      confirm_title: "Supprimer cette connexion bancaire ?"
+      confirm_body: "Cette action supprimera les comptes associés à cette connexion."
+      confirm_accept: "Oui, supprimer"
+      delete: "Supprimer"
+      add_new: "Ajouter une nouvelle banque"
+      no_accounts_title: "Aucun compte disponible"
+      no_accounts_description: "Cette connexion n'a pas encore retourné de comptes bancaires."
+  inventories:
+    form:
+      storage_prompt: "Choisissez le type d'entreposage"
+      type_prompt: "Choisissez le type d'inventaire"
+      storage:
+        depository: "Dépositaire"
+        warehouse: "Entrepôt"
+        store: "Magasin"
+        other: "Autre"
+      type:
+        raw_material: "Matières premières"
+        finished_products: "Produits finis"
+        both: "Les deux"
+      address: "Adresse"
+      city: "Ville"
+      region: "Région"
+      postal_code: "Code postal"
+      country: "Pays"
+    overview:
+      market_value: "Valeur estimée"
+      purchase_price: "Prix d'achat"
+      trend: "Évolution"
+      year_built: "Année de construction"
+      living_area: "Surface habitable"
+      unknown: "Inconnu"
+      edit: "Modifier les détails du compte"
+    edit:
+        edit: "Modifier %{account}"
+    new:
+      title: "Ajouter un stock"
+      import_inventory: "Importer des stocks"
+  registrations:
+    new:
+        label_password: Mot de passe
+        placeholder_password: Entrez votre mot de passe
+        label_password_confirmation: Confirmation du mot de passe
+        placeholder_password_confirmation: Confirmez votre mot de passe
+        submit: Créer un compte
+        join_family_title: "Rejoindre la famille %{family}"
+        title: Créer un compte
+        welcome_title: Bienvenue !
+        welcome_body: Créez votre compte pour commencer.
+        invitation_message: "%{inviter} vous a invité(e) à rejoindre la famille en tant que %{role}"
+        role_admin: administrateur(trice)
+        role_member: membre
+    create:
+        success: "Compte créé avec succès"
+  securities:
+    combobox_security:
+      unknown_name: "Nom inconnu (%{symbol})"
+  sessions:
+    new:
+      title: "Connexion"
+      email: "Adresse e-mail"
+      email_placeholder: "vous@example.com"
+      password: "Mot de passe"
+      submit: "Se connecter"
+      forgot_password: "Mot de passe oublié ?"
+    destroy:
+      logout_successful: "Déconnexion réussie"
+    create:
+      invalid_credentials: "Adresse e-mail ou mot de passe invalide"
+  settings:
+      billings:
+        show:
+          page_title: "Abonnements"
+          subscription_title: "Arion+ – 99 €/mois"
+          subscription_subtitle: "Conçu pour les entrepreneurs individuels ou les petites structures. ➔ Gérez un actif en toute simplicité avec un accès complet aux fonctionnalités principales."
+          subscription_premium_title: "Arion+ Premium – 249 €/mois"
+          subscription_premium_subtitle: "Conçu pour les entreprises multi-actifs ou multi-sites. ➔ Gérez jusqu’à 3 stocks et actifs, avec un accès complet aux outils avancés."
+          subscribed_title: "Vous êtes actuellement abonné à <strong>Arion+</strong>"
+          subscribed_premium_title: "Vous êtes actuellement abonné à <strong>Arion+ Premium</strong>"
+          subscribed_subtitle: "Vous pouvez gérer vos paramètres de facturation ici."
+          not_subscribed_title: "Vous n'êtes actuellement <strong>pas abonné</strong>"
+          not_subscribed_subtitle: "Lorsque vous vous abonnerez à cette formule, vous verrez vos informations de facturation ici."
+          manage: "Gérer"
+          subscribe: "S'abonner"
+          managed_via_stripe: "Géré via Stripe."
+      hostings:
+        danger_zone_settings:
+          clear_cache: "Vider le cache"
+          clear_cache_warning: "Cela supprimera tous les caches d'application. À utiliser avec précaution."
+          confirm_clear_cache:
+            title: "Confirmer la suppression du cache"
+            body: "Êtes-vous sûr de vouloir vider le cache ? Cette action ne peut pas être annulée."
+        invite_code_settings:
+          title: "Contrôle des inscriptions"
+          description: "Requiert une invitation pour créer un compte."
+          email_confirmation_title: "Confirmation par email"
+          email_confirmation_description: "Les utilisateurs doivent confirmer leur adresse email avant de pouvoir se connecter."
+          generated_tokens: "Invitations générées"
+          generate_tokens: "Générer de nouvelles invitations"
+        provider_settings:
+          title: "Déploiement Render"
+          description: "Ajoutez votre lien de déploiement Render pour activer les redéploiements automatiques depuis l'application."
+          render_deploy_hook_label: "Lien de déploiement Render"
+          render_deploy_hook_placeholder: "https://render.com/deploy-hook/..."
+        synth_settings:
+          title: "Clé API Synth"
+          description: "Ajoutez votre clé API Synth pour permettre la récupération automatique de données financières."
+          label: "Clé API Synth"
+          placeholder: "Entrez votre clé API"
+          api_calls_used: "%{used} appels API utilisés sur %{limit} (%{percentage})"
+          plan: "Plan : %{plan}"
+        upgrade_settings:
+          title: "Mises à jour de la plateforme"
+          description: "Choisissez comment vous souhaitez recevoir les mises à jour d'Arion."
+          manual_title: "Manuel"
+          manual_description: "Vous appliquerez les mises à jour manuellement."
+          latest_release_title: "Dernière version stable"
+          latest_release_description: "Recevez automatiquement les mises à jour dès qu’une nouvelle version stable est disponible."
+          latest_commit_title: "Dernier commit"
+          latest_commit_description: "Recevez les mises à jour les plus récentes, incluant les dernières modifications du code."
+        show:
+          title: "Hébergement"
+          general: "Paramètres généraux"
+          invites: "Invitations"
+          danger_zone: "Zone de danger"
+      preferences:
+        data_enrichment_settings:
+          title: "Amélioration des données"
+          description: "Permet d'améliorer automatiquement les noms de marchands, catégories et autres détails grâce à des données externes."
+          self_host_disclaimer: "Cette option dépend de services tiers qui peuvent ne pas être disponibles en auto-hébergement."
+        show:
+          page_title: "Préférences"
+          general_title: "Général"
+          general_subtitle: "Personnalisez vos préférences liées à l'affichage et aux formats"
+          currency: "Devise"
+          language: "Langue"
+          timezone: "Fuseau horaire"
+          date_format: "Format de date"
+          default_period: "Période par défaut"
+          country: "Pays"
+          data: "Données"
+          data_subtitle: "Gérez la qualité des données affichées"
+          theme_title: "Thème"
+          theme_subtitle: "Choisissez un thème pour l’interface"
+          theme_light: "Clair"
+          theme_dark: "Sombre"
+          theme_system: "Système"
+      profiles:
+        show:
+          page_title: "Profil"
+          profile_title: "Profil utilisateur"
+          profile_subtitle: "Modifiez vos informations personnelles."
+          email: "Email"
+          first_name: "Prénom"
+          last_name: "Nom"
+          save: "Enregistrer"
+          unconfirmed_email_notice: "Vous avez demandé à changer votre email pour %{email}. Veuillez confirmer ce changement via le lien reçu par email."
+          household_title: "Entreprise"
+          household_subtitle: "Gérez le nom et les membres de votre entreprise."
+          household_form_label: "Nom de l'entreprise"
+          household_form_input_placeholder: "Nom de votre entreprise"
+          household_members_count: "%{name} · %{count} membres"
+          pending: "En attente"
+          invitation_link: "Lien d'invitation"
+          confirm_remove_member:
+            title: "Retirer le membre"
+            body: "Êtes-vous sûr(e) de vouloir retirer %{name} de cette entreprise ?"
+          remove_member: "Retirer le membre"
+          confirm_remove_invitation:
+            title: "Annuler l'invitation"
+            body: "Êtes-vous sûr(e) de vouloir annuler l’invitation pour %{email} ?"
+          remove_invitation: "Annuler l'invitation"
+          invite_member: "Inviter un membre"
+          danger_zone_title: "Zone de danger"
+          reset_account: "Réinitialiser le compte"
+          reset_account_warning: "Cette action supprimera toutes les données de l'utilisateur."
+          confirm_reset:
+            title: "Confirmer la réinitialisation"
+            body: "Cette action est irréversible. Voulez-vous vraiment réinitialiser le compte de cet utilisateur ?"
+          delete_account: "Supprimer le compte"
+          delete_account_warning: "Cette action est irréversible et supprimera définitivement l'utilisateur."
+          confirm_delete:
+            title: "Confirmer la suppression"
+            body: "Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?"
+      securities:
+        show:
+          page_title: "Sécurité"
+          mfa_title: "Authentification à deux facteurs"
+          mfa_description: "Ajoutez une couche supplémentaire de sécurité à votre compte."
+          mfa_enabled: "L’authentification à deux facteurs est activée."
+          mfa_enabled_description: "Votre compte est protégé par une couche de sécurité supplémentaire."
+          mfa_disabled: "L’authentification à deux facteurs est désactivée."
+          mfa_disabled_description: "Activez l’A2F pour renforcer la sécurité de votre compte."
+          enable_mfa: "Activer l’A2F"
+          disable_mfa: "Désactiver l’A2F"
+          disable_mfa_confirm: "Êtes-vous sûr(e) de vouloir désactiver l’authentification à deux facteurs ?"
+      settings_nav_link_large:
+        previous: "Précédent"
+        next: "Suivant"
+      settings_nav:
+        back: "Retour"
+        general_section_title: "Général"
+        profile_label: "Profil"
+        preferences_label: "Préférences"
+        security_label: "Sécurité"
+        self_hosting_label: "Hébergement"
+        billing_label: "Abonnements"
+        accounts_label: "Comptes"
+        imports_label: "Imports"
+        transactions_section_title: "Transactions"
+        tags_label: "Étiquettes"
+        categories_label: "Catégories"
+        merchants_label: "Commerçants"
+        other_section_title: "Autre"
+        whats_new_label: "Nouveautés"
+        feedback_label: "Contact"
+        logout: "Déconnexion"
+      user_avatar_field:
+        accepted_formats: "Formats acceptés : JPG ou PNG"
+        choose: "Choisir une image"
+  shared:
+    app_version:
+      label: "Version :"
+    confirm_modal:
+      title: "Êtes-vous sûr(e) ?"
+      body_html: "Cette action est irréversible. Veuillez confirmer pour continuer."
+      accept: "Confirmer"
+      cancel: "Annuler"
+    form_errors:
+      error_prefix: "Une erreur est survenue : "
+    modal_form:
+      title: "Titre de la fenêtre"
+      subtitle: "Sous-titre explicatif ici"
+    subscribe_modal:
+      title: "Rejoindre Arion+"
+      paragraph_1: "Personne n’aime les murs payants, mais nous avons besoin de retours d’utilisateurs prêts à payer pour Arion."
+      paragraph_2: "Pour continuer à utiliser l’application, merci de vous abonner. Durant cette phase de test anticipé, vous devez passer à la version supérieure dans l’heure pour réserver votre accès."
+      cta: "Passer à Arion+"
+    syncing_notice:
+      syncing: "Synchronisation en cours..."
+    trend_change:
+      no_change: "Aucun changement"
+    upgrade_notification:
+      app_upgraded: "L’application a été mise à jour vers la version %{version}."
+      new_version_available: "Une nouvelle version est disponible."
+      dismiss: "Ignorer"
+      upgrade_now: "Mettre à jour"
+  tag:
+    deletions:
+      new:
+        delete_tag: "Supprimer le tag"
+        explanation: "Que souhaitez-vous faire des transactions associées au tag « %{tag_name} » ?"
+        replacement_tag_prompt: "Sélectionnez un tag de remplacement"
+        tag: "Tag de remplacement"
+        delete_and_leave_uncategorized: "Supprimer « %{tag_name} » et laisser les transactions non catégorisées"
+        delete_and_recategorize: "Supprimer « %{tag_name} » et recatégoriser avec le tag sélectionné"
+  tags:
+    form:
+        placeholder: "Nom du tag"
+        submit: "Enregistrer"
+    tag:
+        edit: "Modifier"
+        delete: "Supprimer"
+    edit:
+        edit: "Modifier un tag"
+    index:
+        tags: "Tags"
+        new: "Nouveau tag"
+        empty: "Aucun tag n’a encore été créé."
+    new:
+        new: "Nouveau tag"
+  transactions:
+      searches:
+        filters:
+          account_filter:
+            placeholder: "Filtrer les comptes"
+          amount_filter:
+            equal_to: "Égal à"
+            greater_than: "Supérieur à"
+            less_than: "Inférieur à"
+            placeholder: "Montant..."
+          badge:
+            on_or_after: "Le ou après le %{date}"
+            on_or_before: "Le ou avant le %{date}"
+            income: "Revenu"
+            expense: "Dépense"
+            transfer: "Transfert"
+          category_filter:
+            placeholder: "Filtrer par catégorie"
+          date_filter:
+            start_date: "Date de début"
+            end_date: "Date de fin"
+          merchant_filter:
+            placeholder: "Filtrer les commerçants"
+          tag_filter:
+            placeholder: "Filtrer les tags"
+          type_filter:
+            income: "Revenus"
+            expense: "Dépenses"
+            transfer: "Transferts"
+        form:
+          search_placeholder: "Rechercher des transactions par nom"
+          filter: "Filtrer"
+        menu:
+          account_filter: "Comptes"
+          amount_filter: "Montant"
+          category_filter: "Catégories"
+          date_filter: "Dates"
+          merchant_filter: "Commerçants"
+          tag_filter: "Tags"
+          type_filter: "Types"
+          clear_filters: "Réinitialiser"
+          cancel: "Annuler"
+          apply: "Appliquer"
+        search:
+          equal_to: "égal à"
+          greater_than: "supérieur à"
+          less_than: "inférieur à"
+      header:
+        title: "Transactions"
+        edit_categories: "Modifier les catégories"
+        edit_tags: "Modifier les tags"
+        edit_merchants: "Modifier les commerçants"
+        edit_imports: "Modifier les imports"
+        import: "Importer"
+        new_transaction: "Nouvelle transaction"
+      summary:
+        total_transactions: "Nombre total de transactions"
+        income: "Revenus"
+        expenses: "Dépenses"
+      index:
+        transaction: "transaction"
+        transactions: "transactions"
+        transaction_header: "Transaction"
+        category_header: "Catégorie"
+        amount_header: "Montant"
+  transfers:
+      form:
+        expense: "Dépense"
+        income: "Revenu"
+        transfer: "Virement"
+        select_account: "Choisir un compte"
+        from: "Depuis"
+        to: "Vers"
+        amount: "Montant"
+        date: "Date"
+        submit: "Enregistrer le virement"
+      new:
+        title: "Nouveau virement"
+      show:
+        overview: "Vue d’ensemble"
+        details: "Détails"
+        settings: "Paramètres"
+        from: "Depuis"
+        to: "Vers"
+        date: "Date"
+        amount: "Montant"
+        category_label: "Catégorie"
+        uncategorized: "Non catégorisé"
+        note_label: "Notes"
+        note_placeholder: "Ajouter une note à ce virement…"
+        delete_title: "Supprimer le virement"
+        delete_subtitle: "Cela supprimera le virement de vos comptes."
+        delete: "Supprimer"
+  users:
+    update:
+      success: "Utilisateur mis à jour avec succès"
+    user_menu:
+      settings: "Paramètres"
+      changelog: "Historique des modifications"
+      feedback: "Contact"
+      contact: "Enoyer un mail"
+      logout: "Déconnexion"
+      version: "Version :"
+  vehicles:
+    form:
+      make: "Marque"
+      make_placeholder: "Ex : Toyota"
+      model: "Modèle"
+      model_placeholder: "Ex : Corolla"
+      year: "Année"
+      year_placeholder: "Ex : 2020"
+      mileage: "Kilométrage"
+      mileage_placeholder: "Ex : 120000"
+      mileage_unit: "Unité"
+    overview:
+      make_model: "Marque et modèle"
+      year: "Année"
+      mileage: "Kilométrage"
+      purchase_price: "Prix d'achat"
+      current_price: "Prix actuel"
+      trend: "Évolution"
+      unknown: "Inconnu"
+      edit: "Modifier les détails du véhicule"
+    edit:
+      edit: "Modifier %{account}"
+    new:
+      title: "Ajouter un véhicule"

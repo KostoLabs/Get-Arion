@@ -1,0 +1,20 @@
+<%= content_for :title, @issue.title %>
+
+<%= content_for :description do %>
+  <p><%= t(".description.unknown_issue") %></p>
+
+  <pre><code><%= JSON.pretty_generate(@issue.data || "No data provided for this issue") %></code></pre>
+<% end %>
+
+<%= content_for :action do %>
+  <p><%= t(".action.no_fix") %></p>
+
+  <p><%= t(".action.feedback_intro") %></p>
+
+  <ul>
+    <li><%= t(".action.discord_html", link: link_to("Discord", "https://link.maybe.co/discord", target: "_blank")) %></li>
+    <li><%= t(".action.github_html", link: link_to("Github", "https://github.com/maybe-finance/maybe/issues", target: "_blank")) %></li>
+  </ul>
+
+  <p><%= t(".action.include_data") %></p>
+<% end %>

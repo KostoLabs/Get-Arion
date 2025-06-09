@@ -1,0 +1,81 @@
+<%# <%= content_for :page_title, "Contact" %>
+
+<div class="bg-white shadow-border-xs rounded-xl p-8">
+  <%# <h2 class="text-lg font-medium text-primary mb-1">Contacter le service clients</h2> %>
+  <%# <p class="text-sm text-secondary mb-4">Let us know if you have any specific feedback. Feel free to include links to videos or screenshots.</p> %>
+
+  <%# <div class="flex gap-2">
+    <%= link_to "https://github.com/maybe-finance/maybe/discussions/categories/feature-requests", target: "_blank", rel: "noopener noreferrer", class: "w-1/3 flex flex-col items-center p-4 border border-alpha-black-25 rounded-xl hover:bg-gray-50" do %>
+      <%# <%= image_tag "github-icon.svg", class: "w-8 h-8 mb-2" %>
+      <%# <span class="text-sm font-medium text-primary">Write a feature request</span>
+    <% end %>
+
+    <%# <% if self_hosted? %>
+      <%# <%= link_to "https://github.com/maybe-finance/maybe/issues/new?assignees=&labels=bug&template=bug_report.md&title=", target: "_blank", rel: "noopener noreferrer", class: "w-1/3 flex flex-col items-center p-4 border border-alpha-black-25 rounded-xl hover:bg-gray-50" do %>
+        <%# <%= image_tag "github-icon.svg", class: "w-8 h-8 mb-2" %>
+        <%# <span class="text-sm font-medium text-primary">File a bug report</span>
+      <% end %>
+    <%# <% else %>
+      <%# <%= link_to "mailto:hello@maybefinance.com", class: "w-1/3 flex flex-col items-center p-4 border border-alpha-black-25 rounded-xl hover:bg-gray-50", onclick: "Intercom('showNewMessage'); return false;" do %>
+        <%# <%= lucide_icon "bug", class: "w-8 h-8 mb-2" %>
+        <%# <span class="text-sm font-medium text-primary">File a bug report</span>
+      <% end %>
+    <%# <% end %>
+
+    <%# <%= link_to "https://link.maybe.co/discord", target: "_blank", rel: "noopener noreferrer", class: "w-1/3 flex flex-col items-center p-4 border border-alpha-black-25 rounded-xl hover:bg-gray-50" do %>
+      <%# <%= image_tag "discord-icon.svg", class: "w-8 h-8 mb-2" %>
+      <%# <span class="text-sm font-medium text-primary">Discuss Maybe with others</span>
+    <% end %>
+  <%# </div> %>
+
+  <!-- Ajout du bouton "Contacter le support client" -->
+  <%# <div class="flex justify-center mt-4">
+    <%= button_to contact_path,
+      method: :get,
+      class: "w-1/2 flex flex-col items-center p-4 border border-alpha-black-25 rounded-xl hover:bg-gray-50 text-primary font-medium text-sm" do %>
+      <%# <%= lucide_icon "mail", class: "w-8 h-8 mb-2 text-primary" %>
+      <%# <span>Accéder au formulaire de contact</span> %>
+    <%# <% end %>
+  <%# </div> %>
+
+  <!-- Ajout du formulaire "Contacter le support client" -->
+
+  <%# <div class="max-w-xl mx-auto bg-white p-8 rounded-2xl border border-gray-300 shadow-sm"> %>
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold text-primary mb-1 flex items-center gap-2">
+      <%= lucide_icon "mail", class: "w-6 h-6 text-primary" %>
+      Contacter le support clients
+    </h2>
+    <p class="text-sm text-gray-500">
+      Un souci ou une question ? Laissez-nous un message, on revient vers vous rapidement.
+    </p>
+  </div>
+
+  <%= form_with model: @message, url: contacts_path, local: true do |form| %>
+    <div class="space-y-5">
+      <div>
+        <%= form.label :name, "Nom", class: "block text-sm font-medium text-gray-700 mb-1" %>
+        <%= form.text_field :name, class: "w-full px-3 py-1.5 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition" %>
+      </div>
+
+      <div>
+        <%= form.label :email, "E-mail", class: "block text-sm font-medium text-gray-700 mb-1" %>
+        <%= form.email_field :email, class: "w-full px-3 py-1.5 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition" %>
+      </div>
+
+      <div>
+        <%= form.label :subject, "Sujet", class: "block text-sm font-medium text-gray-700 mb-1" %>
+        <%= form.text_field :subject, class: "w-full px-3 py-1.5 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition" %>
+      </div>
+
+      <div>
+        <%= form.label :content, "Message", class: "block text-sm font-medium text-gray-700 mb-1" %>
+        <%= form.text_area :content, rows: 5, class: "w-full px-3 py-1.5 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 resize-none transition" %>
+      </div>
+
+      <div>
+        <%= form.submit "Envoyer le message", class: "bg-black hover:bg-gray-800 text-white font-semibold py-2.5 px-6 rounded-md shadow-sm transition-colors mx-auto block" %>
+      </div>
+    </div>
+  <% end %>
+</div>

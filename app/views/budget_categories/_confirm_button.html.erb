@@ -1,0 +1,11 @@
+<div id="<%= dom_id(budget, :confirm_button) %>">
+  <% if budget.allocations_valid? %>
+    <%= link_to t(".confirm"),
+    budget_path(budget),
+    class: "block btn btn--primary w-full text-center" %>
+  <% else %>
+    <span class="block btn btn--secondary w-full text-center text-subdued cursor-not-allowed">
+      <%= t(".confirm") %>
+    </span>
+  <% end %>
+</div>

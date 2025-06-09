@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="h-full" <%= I18n.locale %>>
+  <head>
+    <title><%= content_for(:title) || "🔒 Arion Early Access" %></title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= javascript_importmap_tags %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Maybe">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <%= yield :head %>
+  </head>
+
+  <body class="subpixel-antialiased h-full bg-black text-white flex flex-col bg-top bg-no-repeat bg-cover" style="background-image: url('<%= asset_path("bg-grid.png") %>');">
+    <div class="grow flex items-center justify-center p-4 sm:p-6 md:p-8">
+      <div class="w-full max-w-sm mx-auto text-center rounded-lg p-6">
+        <%= image_tag "logo-squircle.svg", alt: "Arion Logo", class: "w-16 h-16 sm:w-18 sm:h-18 mx-auto mb-6 sm:mb-8" %>
+        <h1 class="text-2xl font-normal my-4"><%= t(".title") %></h1>
+        <% if @invite_codes_count > 0 %>
+          <p class="text-base text-subdued">
+          <%=t(".with_invites.remaining_invites", count: @invite_codes_count)
+          .html_safe%></p>
+          <div class="bg-gray-900 border border-gray-800 p-2 rounded-xl my-4">
+            <p class="text-sm text-subdued mt-1 mb-3 sm:mb-4">
+            <%= t(".with_invites.your_code", code: @invite_code.token) %>
+            </p>
+            <p>
+              <%= link_to t(".with_invites.sign_up_button"),
+              new_registration_path(invite: @invite_code.token),
+              class: "block w-full bg-white text-black py-2 px-3 rounded-lg no-underline text-sm sm:text-base hover:bg-gray-200 transition duration-150" %>
+            </p>
+          </div>
+          <p class="text-sm text-subdued"><%= t(".with_invites.refresh_note") %></p>
+
+          <p class="mt-4 sm:mt-6">
+            <%= link_to early_access_path, class: "w-full block text-center justify-center inline-flex items-center text-white hover:bg-gray-800 p-2 rounded-md text-base transition duration-150", data: { turbo_method: :get } do %>
+              <%= lucide_icon "refresh-cw", class: "w-4 h-4 sm:w-5 sm:h-5 mr-2 text-subdued" %>
+                <span><%= t(".with_invites.refresh_button") %></span>
+            <% end %>
+          </p>
+        <% else %>
+          <p class="text-base text-subdued mb-6 sm:mb-8">
+            <%= t(".no_invites.message", discord_link: link_to(t(".no_invites.join_discord"), "https://link.maybe.co/discord", target: "_blank", class: "text-white hover:text-gray-300")).html_safe %>
+          </p>
+          <p><%= link_to t(".no_invites.join_discord"), "https://link.maybe.co/discord", target: "_blank", class: "bg-white text-black px-3 py-2 rounded-md no-underline text-base hover:bg-gray-200 transition duration-150" %></p>
+        <% end %>
+      </div>
+    </div>
+    <footer class="pb-6 sm:pb-10 text-center text-subdued text-sm">
+      <%= t(".footer") %>
+    </footer>
+  </body>
+</html>

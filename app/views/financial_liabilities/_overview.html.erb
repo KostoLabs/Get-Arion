@@ -1,0 +1,39 @@
+<%# locals: (account:) %>
+
+<div class="grid grid-cols-3 gap-2">
+  <%= summary_card title: t(".original_principal") do %>
+    <%= format_money account.original_balance %>
+  <% end %>
+
+  <%= summary_card title: t(".remaining_principal") do %>
+    <%= format_money account.balance_money %>
+  <% end %>
+
+  <%= summary_card title: t(".interest_rate") do %>
+    <% if account.financial_liability.lending_rate.present? %>
+      <%= number_to_percentage(account.financial_liability.lending_rate, precision: 2) %>
+    <% else %>
+      <%= t(".unknown") %>
+    <% end %>
+  <% end %>
+
+  <%= summary_card title: t(".collateral") do %>
+    <%= account.financial_liability.collateral&.humanize || t(".none") %>
+  <% end %>
+
+  <%= summary_card title: t(".haircut") do %>
+    <% if account.financial_liability.haircut.present? %>
+      <%= number_to_percentage(account.financial_liability.haircut, precision: 2) %>
+    <% else %>
+      <%= t(".unknown") %>
+    <% end %>
+  <% end %>
+
+  <%= summary_card title: t(".type") do %>
+    <%= account.financial_liability.lending_type&.titleize || t(".unknown") %>
+  <% end %>
+</div>
+
+<div class="flex justify-center py-8">
+  <%= link_to t(".edit_details"), edit_financial_liability_path(account), class: "btn btn--ghost", data: { turbo_frame: :modal } %>
+</div>

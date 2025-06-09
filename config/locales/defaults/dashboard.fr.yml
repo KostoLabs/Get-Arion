@@ -1,0 +1,65 @@
+fr:
+  period:
+      labels:
+        last_month: "vs. mois dernier"
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        family: Famille
+        family_id: Famille
+        first_name: Prénom
+        last_name: Nom
+        password: Mot de passe
+        password_confirmation: Confirmation mot de passe
+  accountable:
+    types:
+      inventories: "Stocks"
+  accountable_types:
+    depository: "Compte bancaire / courant"
+    investment: "Investissement"
+    crypto: "Crypto"
+    property: "Bien immobilier"
+    vehicle: "Véhicule"
+    other_asset: "Autre actif"
+    credit_card: "Carte de crédit"
+    loan: "Prêt"
+    financial_liability: "Dette personnalisée"
+    other_liability: "Autre passif"
+    inventory: "Stock"
+  pages:
+     dashboard:
+      balance_sheet:
+          name: "Nom"
+          weight: "Répartition"
+          value: "Valeur"
+          empty:
+            title: "Aucun %{name}"
+            subtitle: "Vous n'avez aucun %{name} enregistré pour le moment."
+          asset:
+            title: "Actifs"
+          liability:
+            title: "Passifs"
+          cash:
+            title: "Espèces"
+      net_worth_chart:
+        title: "Valeur nette"
+        no_data: "Aucune donnée disponible pour la période sélectionnée"
+        no_change: "Aucune variation par rapport à la période précédente"
+        comparison: "%{label}"
+  accounts:
+    index:
+      manual_accounts:
+        other_accounts: "Autres comptes"
+    new:
+      method_selector:
+        title: "Méthode de connexion"
+        manual_entry: "Saisie manuelle"
+        connected_entry: "Connexion automatique (États-Unis)"
+        connected_entry_eu: "Connexion automatique (Europe)"
+    container:
+      select: "Sélectionner"
+      navigate: "Naviguer"
+      close: "Fermer"
+      previous: "Précédent"
+      next: "Suivant"

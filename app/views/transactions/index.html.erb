@@ -1,0 +1,46 @@
+<div class="space-y-4 h-fit max-h-full flex flex-col" data-controller="focus-record" data-focus-record-id-value="<%= @focused_record ? dom_id(@focused_record) : nil %>">
+  <%= render "header" %>
+
+  <%= render "summary", totals: @totals %>
+
+  <div id="transactions"
+       data-controller="bulk-select"
+       data-bulk-select-singular-label-value="<%= t(".transaction") %>"
+       data-bulk-select-plural-label-value="<%= t(".transactions") %>"
+       class="overflow-y-auto flex flex-col bg-white rounded-xl shadow-border-xs p-4">
+    <%= render "transactions/searches/search" %>
+
+    <div id="entry-selection-bar" data-bulk-select-target="selectionBar" class="flex justify-center hidden">
+      <%= render "account/transactions/selection_bar" %>
+    </div>
+
+    <% if @pagy.count > 0 %>
+      <div class="grid grid-cols-12 bg-gray-25 rounded-xl px-5 py-3 text-xs uppercase font-medium text-secondary items-center mb-4">
+        <div class="pl-0.5 col-span-8 flex items-center gap-4">
+          <%= check_box_tag "selection_entry",
+                            class: "checkbox checkbox--light",
+                            data: { action: "bulk-select#togglePageSelection" } %>
+          <p><%= t(".transaction_header") %></p>
+        </div>
+
+        <p class="col-span-2"><%= t(".category_header") %></p>
+        <p class="col-span-2 justify-self-end"><%= t(".amount_header") %></p>
+      </div>
+        <div class="space-y-6">
+          <%= entries_by_date(@transactions.map(&:entry), totals: true) do |entries| %>
+            <%# Only render the outflow side of transfers to avoid duplicate entries %>
+            <%= render partial: "account/entries/entry",
+           collection: entries.reject { |e| e.entryable.transfer_as_inflow.present? },
+           locals: { balance_trend: @balance_trend, view_ctx: self } %>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <%= render "account/entries/empty" %>
+    <% end %>
+
+    <div class="pt-4">
+      <%= render "shared/pagination", pagy: @pagy %>
+    </div>
+  </div>
+</div>

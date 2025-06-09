@@ -1,0 +1,44 @@
+<section
+  class="bg-white py-4 rounded-xl shadow-border-xs"
+  data-controller="tabs"
+  data-tabs-active-class="bg-white shadow-sm text-primary"
+  data-tabs-inactive-class="text-secondary"
+  data-tabs-default-tab-value="asset"
+  data-tabs-local-storage-key-value="dashboard-allocation"
+>
+  <div class="flex justify-between items-center px-6">
+    <h2 class="text-lg font-medium text-gray-900">
+      <%= t(".title") %>
+    </h2>
+  </div>
+
+  <div class="px-6 mt-4">
+    <div class="bg-surface-inset rounded-lg p-1 flex w-full max-w-sm mx-auto">
+      <button type="button"
+              data-id="asset"
+              data-tabs-target="btn"
+              data-action="click->tabs#select"
+              class="w-1/2 px-3 py-1 rounded-md text-sm font-medium">
+        <%= t(".assets") %>
+      </button>
+
+      <button type="button"
+              data-id="liability"
+              data-tabs-target="btn"
+              data-action="click->tabs#select"
+              class="w-1/2 px-3 py-1 rounded-md text-sm font-medium">
+        <%= t(".debts") %>
+      </button>
+    </div>
+  </div>
+
+  <div class="p-6 tab-content tab-visible" data-tabs-target="tab" id="asset">
+    <%= render partial: "pages/dashboard/account_allocation_pie",
+           locals: { account_groups: @balance_sheet.account_groups("asset"), currency: @balance_sheet.currency, classification: "asset" } %>
+  </div>
+
+  <div class="p-6 tab-content tab-hidden" data-tabs-target="tab" id="liability">
+    <%= render partial: "pages/dashboard/account_allocation_pie",
+           locals: { account_groups: @balance_sheet.account_groups("liability"), currency: @balance_sheet.currency, classification: "liability" } %>
+  </div>
+</section>

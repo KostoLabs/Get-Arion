@@ -1,0 +1,136 @@
+<% total = account_groups.sum(&:total) %>
+<% all_accounts = account_groups.flat_map(&:accounts) %>
+
+<%
+  # Pour les calculs du graphique, on utilise toujours les valeurs absolues
+  # total et account.balance sont déjà des BigDecimal
+  abs_total_float = total.abs.to_f
+
+  # Filtrer et préparer les comptes avec des valeurs utilisables
+  valid_accounts = all_accounts.select do |account|
+    balance_float = account.balance.to_f  # Supprimer .amount ici
+    balance_float.abs > 0
+  end
+
+  # Préparer les données pour le graphique
+  chart_data = valid_accounts.map do |account|
+    balance_float = account.balance.abs.to_f  # Supprimer .amount ici aussi
+    {
+      account: account,
+      value: balance_float,
+      percentage: abs_total_float > 0 ? (balance_float / abs_total_float) * 100 : 0
+    }
+  end
+%>
+
+<% if chart_data.any? && abs_total_float > 0 %>
+  <div class="relative w-60 h-60 mx-auto flex items-center justify-center">
+    <svg width="240" height="240" viewBox="0 0 240 240" class="donut-chart">
+      <%
+        current_angle = 0
+        chart_data.each do |data|
+          account = data[:account]
+          value = data[:value]
+          percentage = data[:percentage]
+
+          angle = (percentage / 100.0) * 360
+          next if angle <= 0.1
+
+          # Paramètres du donut
+          inner_radius = 75
+          outer_radius = 105
+          center_x = 120
+          center_y = 120
+
+          # Calculs des angles en radians
+          start_rad = (current_angle - 90) * Math::PI / 180
+          end_rad = (current_angle + angle - 90) * Math::PI / 180
+
+          # Points externes
+          x1 = center_x + outer_radius * Math.cos(start_rad)
+          y1 = center_y + outer_radius * Math.sin(start_rad)
+          x2 = center_x + outer_radius * Math.cos(end_rad)
+          y2 = center_y + outer_radius * Math.sin(end_rad)
+
+          # Points internes
+          x3 = center_x + inner_radius * Math.cos(end_rad)
+          y3 = center_y + inner_radius * Math.sin(end_rad)
+          x4 = center_x + inner_radius * Math.cos(start_rad)
+          y4 = center_y + inner_radius * Math.sin(start_rad)
+
+          # Flag pour arc large
+          large_arc = angle > 180 ? 1 : 0
+
+          # Construction du path avec gestion du cercle complet
+          if angle >= 359.9
+            # Pour un cercle quasi-complet, on fait deux demi-cercles
+            mid_rad = start_rad + Math::PI
+            x_mid_outer = center_x + outer_radius * Math.cos(mid_rad)
+            y_mid_outer = center_y + outer_radius * Math.sin(mid_rad)
+            x_mid_inner = center_x + inner_radius * Math.cos(mid_rad)
+            y_mid_inner = center_y + inner_radius * Math.sin(mid_rad)
+
+            path = "M #{x1.round(2)} #{y1.round(2)} "
+            path += "A #{outer_radius} #{outer_radius} 0 0 1 #{x_mid_outer.round(2)} #{y_mid_outer.round(2)} "
+            path += "A #{outer_radius} #{outer_radius} 0 0 1 #{x2.round(2)} #{y2.round(2)} "
+            path += "L #{x3.round(2)} #{y3.round(2)} "
+            path += "A #{inner_radius} #{inner_radius} 0 0 0 #{x_mid_inner.round(2)} #{y_mid_inner.round(2)} "
+            path += "A #{inner_radius} #{inner_radius} 0 0 0 #{x4.round(2)} #{y4.round(2)} "
+            path += "Z"
+          else
+            # Path normal pour les arcs partiels
+            path = "M #{x1.round(2)} #{y1.round(2)} "
+            path += "A #{outer_radius} #{outer_radius} 0 #{large_arc} 1 #{x2.round(2)} #{y2.round(2)} "
+            path += "L #{x3.round(2)} #{y3.round(2)} "
+            path += "A #{inner_radius} #{inner_radius} 0 #{large_arc} 0 #{x4.round(2)} #{y4.round(2)} "
+            path += "Z"
+          end
+
+          color = account.accountable_type == "FinancialLiability" ? "#EF4444" : account.accountable.color
+      %>
+        <path d="<%= path %>"
+              fill="<%= color %>"
+              class="donut-segment transition-all duration-300 hover:brightness-110 cursor-pointer">
+          <title><%= account.name %>: <%= format_money(Money.new(account.balance, currency), currency: currency) %> (<%= number_to_percentage(percentage, precision: 1) %>)</title>
+        </path>
+      <%
+          current_angle += angle
+        end
+      %>
+    </svg>
+
+    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+      <p class="text-xs text-gray-500 uppercase"><%= t("pages.dashboard.total") %></p>
+      <p class="text-lg font-bold"><%= format_money(Money.new(total, currency), currency: currency) %></p>
+    </div>
+  </div>
+
+  <div class="mt-4 space-y-1">
+    <% chart_data.each do |data| %>
+      <% account = data[:account] %>
+      <div class="flex items-center gap-2 text-sm">
+        <div class="h-2 w-2 rounded-full" style="background-color: <%= account.accountable_type == "FinancialLiability" ? "#EF4444" : account.accountable.color %>;"></div>
+        <span><%= account.name %></span>
+        <span class="ml-auto font-mono"><%= number_to_percentage(data[:percentage], precision: 0) %></span>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <!-- Pas de données -->
+  <div class="relative w-60 h-60 mx-auto flex items-center justify-center">
+    <svg width="240" height="240" viewBox="0 0 240 240">
+      <circle cx="120" cy="120" r="105" fill="none" stroke="#E5E7EB" stroke-width="30"/>
+    </svg>
+    <div class="absolute inset-0 flex flex-col items-center justify-center">
+      <p class="text-xs text-gray-500 uppercase"><%= t("pages.dashboard.total") %></p>
+      <p class="text-lg font-bold"><%= format_money(Money.new(0, currency), currency: currency) %></p>
+    </div>
+  </div>
+<% end %>
+
+<style>
+  .donut-segment:hover {
+    filter: brightness(1.1);
+  }
+</style>

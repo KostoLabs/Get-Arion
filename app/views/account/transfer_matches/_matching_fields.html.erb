@@ -1,0 +1,43 @@
+<%# locals: (form:, entry:, candidates:, accounts:) %>
+
+<% if candidates.any? %>
+  <div data-controller="transfer-match" class="space-y-2">
+    <p class="text-sm text-secondary">
+      <%= t(".instructions") %>
+    </p>
+
+    <%= form.select :method,
+              [
+                [t(".match_existing"), "existing"],
+                [t(".create_new"), "new"]
+              ],
+              { selected: "existing", label: t(".method_label") },
+              data: { action: "change->transfer-match#update" } %>
+
+    <div data-transfer-match-target="existingSelect">
+      <%= form.select :matched_entry_id,
+                candidates.map { |entry|
+                  [entry_name_detailed(entry), entry.id]
+                },
+                { label: t(".existing_transaction_label") } %>
+    </div>
+
+    <div data-transfer-match-target="newSelect" class="hidden">
+      <%= form.select :target_account_id,
+                accounts.map { |account| [account.name, account.id] },
+                { label: t(".target_account_label") } %>
+    </div>
+  </div>
+<% else %>
+  <p class="text-sm text-secondary">
+    <%= t(".no_match_found_text") %>
+  </p>
+
+  <%= form.hidden_field :method, value: "new" %>
+
+  <div>
+    <%= form.select :target_account_id,
+                accounts.map { |account| [account.name, account.id] },
+                { label: t(".target_account_label") } %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="flex justify-center items-center py-20">
+  <div class="text-center flex flex-col items-center max-w-[300px] gap-4">
+    <p class="text-primary mb-1 font-medium text-sm"><%= t(".message") %></p>
+
+    <% if Current.family&.can_import? %>
+      <%= link_to new_import_path, class: "btn btn--primary flex items-center gap-2", data: { turbo_frame: "modal" } do %>
+        <%= lucide_icon("plus", class: "w-5 h-5") %>
+        <span><%= t(".new") %></span>
+      <% end %>
+    <% else %>
+      <%= link_to settings_billing_path,
+                  class: "btn btn--primary flex items-center gap-2",
+                  data: { turbo_frame: "_top" },
+                  method: :get do %>
+        <%= lucide_icon("plus", class: "w-5 h-5") %>
+        <span><%= t(".new") %></span>
+      <% end %>
+      <% flash.now[:alert] = Current.family.account_limit_message %>
+    <% end %>
+  </div>
+</div>

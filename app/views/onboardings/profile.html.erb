@@ -1,0 +1,57 @@
+<div class="bg-gray-25 h-screen flex flex-col justify-between">
+  <%= render "onboardings/header" %>
+
+  <div class="grow max-w-lg w-full mx-auto bg-gray-25 flex flex-col justify-center">
+    <div>
+      <div class="space-y-1 mb-6">
+        <h1 class="text-2xl font-medium"><%= t(".title") %></h1>
+        <p class="text-secondary text-sm"><%= t(".subtitle") %></p>
+      </div>
+
+      <%= styled_form_with model: @user do |form| %>
+        <%= form.hidden_field :redirect_to, value: @invitation ? "home" : "onboarding_preferences" %>
+        <%= form.hidden_field :onboarded_at, value: Time.current if @invitation %>
+
+        <div class="space-y-4 mb-4">
+          <p class="text-secondary text-xs"><%= t(".profile_image") %></p>
+          <%= render "settings/user_avatar_field", form: form, user: @user %>
+        </div>
+
+        <div class="flex justify-between items-center gap-4 mb-4">
+          <%= form.text_field :first_name, placeholder: t(".first_name"), label: t(".first_name"), container_class: "bg-white w-1/2", required: true %>
+          <%= form.text_field :last_name, placeholder: t(".last_name"), label: t(".last_name"), container_class: "bg-white w-1/2", required: true %>
+        </div>
+
+        <div data-controller="siren">
+          <div class="space-y-4 mb-4">
+            <%= form.text_field :siren_temp, name: "user[siren]", placeholder: "Numéro SIREN", label: "SIREN", container_class: "bg-white w-full", id: "siren_siret_input", data: { siren_target: "sirenInput" } %>
+
+            <button type="button"
+              class="w-full border border-black text-black bg-white rounded-md py-2 px-4 text-center text-sm font-medium hover:bg-gray-100 transition"
+              data-action="click->siren#fetchCompanyData">
+              OK
+            </button>
+
+            <p id="siren_error" class="text-red-500 hidden" data-siren-target="error">Aucun SIREN trouvé, merci de réessayer.</p>
+
+            <!-- Champs pré-remplis cachés -->
+            <div id="results" class="hidden" data-siren-target="results">
+              <div class="space-y-4">
+                <%= form.text_field :company_name_temp, name: "user[company_name]", placeholder: "Nom de l'entreprise", label: "Nom de l'entreprise", container_class: "bg-white w-full", data: { siren_target: "companyName" } %>
+                <%= form.text_field :company_address_temp, name: "user[company_address]", placeholder: "Adresse", label: "Adresse", container_class: "bg-white w-full", data: { siren_target: "companyAddress" } %>
+                <%= form.text_field :company_postal_code_temp, name: "user[company_postal_code]", placeholder: "Code postal", label: "Code postal", container_class: "bg-white w-full", data: { siren_target: "companyPostalCode" } %>
+                <%= form.text_field :company_city_temp, name: "user[company_city]", placeholder: "Ville", label: "Ville", container_class: "bg-white w-full", data: { siren_target: "companyCity" } %>
+                <%= form.text_field :company_naf_temp, name: "user[company_naf]", placeholder: "Code NAF", label: "Code NAF", container_class: "bg-white w-full", data: { siren_target: "companyNaf" } %>
+                <%= form.text_field :company_creation_date_temp, name: "user[company_creation_date]", placeholder: "Date de création", label: "Date de création", container_class: "bg-white w-full", data: { siren_target: "companyCreationDate" } %>
+              </div>
+            </div>
+          </div>
+
+  <%= form.submit t(".submit"), data: { siren_target: "submitButton" }, class: "btn btn--primary w-full", disabled: true %>
+</div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render "layouts/shared/footer" %>
+</div>

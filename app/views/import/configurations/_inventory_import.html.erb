@@ -1,0 +1,19 @@
+<p class="text-sm text-gray-600">
+  Veuillez sélectionner les colonnes correspondant aux champs ci-dessous. Les champs marqués d’un astérisque (*) sont obligatoires. Si vous n’avez pas cette information dans votre fichier, laissez le champ vide.
+</p>
+
+<%= styled_form_with model: @import, url: import_configuration_path(@import), scope: :import, method: :patch, class: "space-y-2" do |form| %>
+  <%= form.select :asset_customer_id_col_label, import.csv_headers, include_blank: "Choisir une colonne...", label: "Numéro article *" %>
+  <%= form.select :asset_description_col_label, import.csv_headers, include_blank: "Choisir une colonne...", label: "Nom article *" %>
+  <%= form.select :asset_type_col_label, import.csv_headers, include_blank: "Laisser vide si non présent dans le fichier", label: "Type" %>
+  <%= form.select :asset_qty_col_label, import.csv_headers, include_blank: "Choisir une colonne...", label: "Quantité *" %>
+  <%= form.select :asset_unit_col_label, import.csv_headers, include_blank: "Choisir une colonne...", label: "Unité *" %>
+  <%= form.select :asset_item_value_col_label, import.csv_headers, include_blank: "Choisir une colonne...", label: "Valeur unitaire *" %>
+  <%= form.select :asset_value_col_label, import.csv_headers, include_blank: "Choisir une colonne...", label: "Valeur totale *" %>
+  <%= form.select :asset_category_col_label, import.csv_headers, include_blank: "Laisser vide si non catégorisé", label: "Catégorie" %>
+  <%= form.select :asset_entry_date_col_label, import.csv_headers, include_blank: "Laisser vide si non précisé", label: "Date d'entrée" %>
+  <%= form.select :asset_out_date_col_label, import.csv_headers, include_blank: "Laisser vide si non précisé", label: "Date de sortie" %>
+  <%= form.select :asset_place_id_col_label, import.csv_headers, include_blank: "Choisir une colonne...", label: "Emplacement entrepôt *" %>
+
+  <%= form.submit t(".apply_configuration", default: "Appliquer la configuration"), class: "w-full btn btn--primary" %>
+<% end %>

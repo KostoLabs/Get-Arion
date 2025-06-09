@@ -1,0 +1,64 @@
+<%= render "layouts/shared/htmldoc" do %>
+  <div class="flex h-full bg-gray-50">
+    <nav class="flex flex-col shrink-0 w-[84px] py-4 mr-3">
+      <div class="pl-2 mb-3">
+        <%= link_to root_path, class: "block" do %>
+          <%= image_tag "logomark-color.svg", class: "w-9 h-9 mx-auto" %>
+        <% end %>
+      </div>
+
+      <ul class="space-y-0.5">
+        <li>
+          <%= render "layouts/sidebar/nav_item", name: t("sidebar.nav.home"), path: root_path, icon_key: "pie-chart" %>
+        </li>
+
+        <%# <li>
+          <%= render "layouts/sidebar/nav_item", name: t("sidebar.nav.transactions"), path: transactions_path, icon_key: "credit-card" %>
+        <%# </li>  %>
+
+        <%# <li>
+          <%= render "layouts/sidebar/nav_item", name: t("sidebar.nav.budgets"), path: budgets_path, icon_key: "map" %>
+        <%# </li>  %>
+      </ul>
+
+      <div class="pl-2 mt-auto mx-auto">
+        <%= render "users/user_menu", user: Current.user %>
+      </div>
+    </nav>
+
+    <%= tag.div class: class_names("py-4 shrink-0 h-full overflow-y-auto transition-all duration-300", Current.user.show_sidebar? ? "w-80" : "w-0"), data: { sidebar_target: "panel" } do %>
+      <% if content_for?(:sidebar) %>
+        <%= yield :sidebar %>
+      <% else %>
+        <div id="account-sidebar-tabs" data-turbo-permanent>
+          <%= render "accounts/account_sidebar_tabs", family: Current.family %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= tag.main class: class_names("px-10 py-4 grow h-full", require_upgrade? ? "relative overflow-hidden" : "overflow-y-auto") do %>
+
+
+      <% if require_upgrade? %>
+        <div class="absolute inset-0 px-10 h-full w-full z-50">
+          <%= render "shared/subscribe_modal" %>
+        </div>
+      <% end %>
+
+      <%= tag.div class: class_names("mx-auto w-full h-full", Current.user.show_sidebar? ? "max-w-4xl" : "max-w-5xl"), data: { sidebar_target: "content" } do %>
+        <% if content_for?(:breadcrumbs) %>
+          <%= yield :breadcrumbs %>
+        <% else %>
+          <%= render "layouts/shared/breadcrumbs", breadcrumbs: @breadcrumbs %>
+        <% end %>
+
+        <% if content_for?(:page_header) %>
+          <%= yield :page_header %>
+        <% end %>
+
+        <%= yield %>
+      <% end %>
+    <% end %>
+
+  </div>
+<% end %>

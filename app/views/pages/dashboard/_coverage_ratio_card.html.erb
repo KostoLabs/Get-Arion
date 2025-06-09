@@ -1,0 +1,15 @@
+<div class="bg-white py-4 px-6 rounded-xl shadow-border-xs">
+  <h2 class="text-lg font-medium mb-2">
+    <%= t('.coverage_ratio_title', default: "Ratio de couverture") %>
+  </h2>
+
+  <% if coverage_ratio.present? %>
+    <p class="text-3xl font-bold text-green-600">
+      <%= number_with_precision(coverage_ratio, precision: 2) %> %
+    </p>
+  <% else %>
+    <p class="text-gray-500">
+      <%= t('.coverage_ratio_unavailable', default: "Pas de données suffisantes pour le calcul") %>
+    </p>
+  <% end %>
+</div>

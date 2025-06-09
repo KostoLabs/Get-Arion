@@ -1,0 +1,31 @@
+<%= content_for :title, @issue.title %>
+
+<%= content_for :description do %>
+  <p>
+    <%= t(".description.family_currency", currency: Current.family.currency) %>
+    <%= t(".description.other_currency", name: @issue.issuable.name) %>
+  </p>
+
+  <p><%= t(".description.provider_missing") %></p>
+<% end %>
+
+<%= content_for :action do %>
+  <% if self_hosted? %>
+    <p><%= t(".action.api_required") %></p>
+
+    <p>
+      <%= t(".action.synth_intro") %>
+      <%= link_to "Synth Finance", "https://synthfinance.com", target: "_blank" %>
+      <%= t(".action.synth_explanation") %>
+    </p>
+
+    <p><%= t(".action.paste_key") %></p>
+
+    <%= styled_form_with model: @issue, url: issue_exchange_rate_provider_missing_path(@issue), method: :patch, class: "space-y-3" do |form| %>
+      <%= form.text_field :synth_api_key, label: t(".form.label"), placeholder: t(".form.placeholder"), type: "password", class: "w-full", value: Setting.synth_api_key %>
+      <%= form.submit t(".form.submit"), class: "btn-primary" %>
+    <% end %>
+  <% else %>
+    <p><%= t(".action.contact_team") %></p>
+  <% end %>
+<% end %>

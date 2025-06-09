@@ -1,0 +1,31 @@
+<%# locals: (import:) %>
+
+<%= styled_form_with model: @import, url: import_configuration_path(@import), scope: :import, method: :patch, class: "space-y-2" do |form| %>
+  <div class="flex items-center gap-2">
+    <%= form.select :date_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".date") }, required: true %>
+    <%= form.select :date_format, Family::DATE_FORMATS, { label: t(".date_format_label") }, label: true, required: true %>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <%= form.select :amount_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".amount") }, required: true %>
+    <%= form.select :signage_convention,
+          [[t(".incomes_positive"), "inflows_positive"], [t(".incomes_negative"), "inflows_negative"]],
+          { label: t(".signage_convention") } %>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <%= form.select :currency_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".currency") } %>
+    <%= form.select :number_format, Import::NUMBER_FORMATS.keys, { label: t(".format"), prompt: t(".select_format") }, required: true %>
+  </div>
+
+  <% unless import.account.present? %>
+    <%= form.select :account_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".account_optional") } %>
+  <% end %>
+
+  <%= form.select :name_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".name_optional") } %>
+  <%= form.select :category_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".category_optional") } %>
+  <%= form.select :tags_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".tags_optional") } %>
+  <%= form.select :notes_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".notes_optional") } %>
+
+  <%= form.submit t(".apply_configuration"), class: "w-full btn btn--primary", disabled: import.complete? %>
+<% end %>

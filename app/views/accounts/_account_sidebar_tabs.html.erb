@@ -1,0 +1,94 @@
+<% if family.requires_data_provider? && family.synth_client.nil? %>
+  <details class="group bg-yellow-tint-10 rounded-lg p-2 text-yellow-600 mb-3 text-xs">
+    <summary class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <%= icon "triangle-alert", size: "sm" %>
+        <p class="font-medium"> <%= t(".missing_data_title") %> </p>
+      </div>
+      <%= lucide_icon "chevron-down", class: "text-yellow-600 group-open:transform group-open:rotate-180 w-5" %>
+    </summary>
+    <div class="text-xs py-2 space-y-2">
+      <p> <%= t(".missing_data_explanation") %> </p>
+      <p>
+        <%= link_to t(".add_api_key_link"), settings_hosting_path, class: "text-yellow-600 underline" %>
+      </p>
+    </div>
+  </details>
+<% end %>
+
+<div
+  class="space-y-3"
+  data-controller="tabs"
+  data-tabs-local-storage-key-value="account-sidebar-tabs"
+  data-tabs-active-class="bg-white shadow-sm text-primary"
+  data-tabs-inactive-class="text-secondary"
+  data-tabs-default-tab-value="assets-tab">
+  <div class="bg-surface-inset rounded-lg p-1 flex">
+    <button type="button" data-id="assets-tab" class="w-1/3 px-2 py-1 rounded-md text-sm text-secondary font-medium" data-tabs-target="btn" data-action="click->tabs#select">
+      <%= t(".assets") %>
+    </button>
+
+    <button type="button" data-id="debts-tab" class="w-1/3 px-2 py-1 rounded-md text-secondary text-sm font-medium" data-tabs-target="btn" data-action="click->tabs#select">
+      <%= t(".debts") %>
+    </button>
+
+    <button type="button" data-id="all-tab" class="w-1/3 px-2 py-1 rounded-md text-secondary text-sm font-medium" data-tabs-target="btn" data-action="click->tabs#select">
+      <%= t(".all") %>
+    </button>
+  </div>
+
+  <div data-tabs-target="tab" id="assets-tab">
+    <%= link_to new_account_path(step: "method_select", classification: "asset"),
+                class: "flex items-center gap-3 btn btn--ghost text-secondary mb-1" do %>
+      <%= icon("plus") %>
+      <span> <%= t(".new_asset") %> </span>
+    <% end %>
+
+    <% if Current.family.can_import? %>
+    <%# <%= link_to new_import_path(import: { type: "AccountImport" }),
+                data: { turbo_frame: "_top" },
+                class: "flex items-center gap-3 btn btn--ghost text-secondary mb-1" do %>
+      <%# <%= icon("download") %>
+      <%# <span><%= t("accounts.new.import_accounts")</span> %>
+    <%# <% end %> 
+
+    <%= link_to new_import_path(import: { type: "InventoryImport" }),
+                data: { turbo_frame: "_top" },
+                class: "flex items-center gap-3 btn btn--ghost text-secondary mb-1" do %>
+      <%= icon("download") %>
+      <span><%= t("inventories.new.import_inventory") %></span>
+    <% end %>
+
+    <hr class="border-t border-gray-200 my-2">
+  <% end %>
+
+
+    <div class="space-y-2">
+      <% family.balance_sheet.account_groups("asset").each do |group| %>
+        <%= render "accounts/accountable_group", account_group: group %>
+      <% end %>
+    </div>
+  </div>
+
+  <div data-tabs-target="tab" id="debts-tab" class="hidden">
+    <%= link_to new_account_path(step: "method_select", classification: "liability"),
+                class: "flex items-center gap-3 btn btn--ghost text-secondary mb-1" do %>
+      <%= icon("plus") %>
+      <span> <%= t(".new_debt") %> </span>
+    <% end %>
+
+    <div class="space-y-2">
+      <% family.balance_sheet.account_groups("liability").each do |group| %>
+        <%= render "accounts/accountable_group", account_group: group %>
+      <% end %>
+    </div>
+  </div>
+
+  <div data-tabs-target="tab" id="all-tab" class="hidden">
+    <div class="space-y-2">
+      <% family.balance_sheet.account_groups.each do |group| %>
+        <%= render "accounts/accountable_group", account_group: group %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<%# locals: import, columns %>
+
+<%= styled_form_with model: @import, url: import_configuration_path(@import), scope: :import, method: :patch, class: "space-y-2" do |form| %>
+  <%= form.select :entity_type_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".entity_type") } %>
+  <%= form.select :name_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".name_optional") } %>
+  <%= form.select :amount_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".balance") } %>
+  <%= form.select :currency_col_label, import.csv_headers, { include_blank: t(".leave_empty"), label: t(".currency") } %>
+
+  <%= form.submit t(".apply_configuration"), class: "w-full btn btn--primary", disabled: import.complete? %>
+<% end %>

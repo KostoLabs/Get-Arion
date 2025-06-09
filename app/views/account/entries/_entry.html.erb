@@ -1,0 +1,13 @@
+<% if entry.entryable.present? && entry.entryable.respond_to?(:to_partial_path) %>
+  <%= render partial: entry.entryable.to_partial_path,
+             locals: { entry: entry, balance_trend: balance_trend, view_ctx: view_ctx } %>
+<% else %>
+  <div class="py-2 border-b">
+    <div class="text-sm font-medium">
+      <%= entry.name.presence || "Entrée sans nom" %>
+    </div>
+    <div class="text-xs text-gray-500">
+      Le <%= l(entry.date) %> – <%= number_to_currency(entry.amount, unit: entry.currency) %>
+    </div>
+  </div>
+<% end %>

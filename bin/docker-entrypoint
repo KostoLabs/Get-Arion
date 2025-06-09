@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+echo "🚀 Entrypoint démarré"
+echo "📦 PORT = $PORT"
+
+# Si on lance le serveur Rails, on applique uniquement les migrations (pas de schema.rb)
+if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+  echo "🛠️  Migration de la base de données (db:migrate)..."
+  ./bin/rails db:migrate
+
+  # Optionnel : charger les seeds
+  # echo "🌱 Chargement des seeds..."
+  # ./bin/rails db:seed
+fi
+
+# Lancer la commande passée (ex: rails server)
+exec "$@"
+
+
+
+

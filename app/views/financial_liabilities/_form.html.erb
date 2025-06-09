@@ -1,0 +1,90 @@
+<%= render "accounts/form", account: account, url: url do |form| %>
+  <hr class="my-3">
+
+  <div data-controller="collateral">
+    <%= form.fields_for :accountable do |f| %>
+    <div class="space-y-1">
+      <%= f.select :lending_type, [
+        [t("financial_liabilities.form.lending_type_options.overdraft"), "overdraft"],
+        [t("financial_liabilities.form.lending_type_options.obligation"), "obligation"],
+        [t("financial_liabilities.form.lending_type_options.convertible"), "convertible"],
+        [t("financial_liabilities.form.lending_type_options.note"), "note"],
+        [t("financial_liabilities.form.lending_type_options.classic_loan"), "classic loan"],
+        [t("financial_liabilities.form.lending_type_options.term_loan"), "term loan"]
+      ],
+      {
+        label: t("financial_liabilities.form.lending_type"),
+        required: true,
+        prompt: "Sélectionner un type de prêt"
+      } %>
+
+      <div class="flex gap-2">
+        <%= f.number_field :lending_rate,
+              label: t("financial_liabilities.form.lending_rate"),
+              step: 0.01,
+              placeholder: "Ex: 3.5 (pour 3.5%)" %>
+
+        <%= f.select :lending_rate_type, [
+          [t("financial_liabilities.form.rate_type_options.fixed"), "fixed"],
+          [t("financial_liabilities.form.rate_type_options.variable"), "variable"]
+        ],
+        {
+          label: t("financial_liabilities.form.lending_rate_type"),
+          required: true,
+          prompt: "Choisir le type"
+        } %>
+      </div>
+
+      <%= f.date_field :lending_start,
+            label: t("financial_liabilities.form.lending_start"),
+            required: true,
+            placeholder: "jj/mm/aaaa" %>
+
+      <%= f.date_field :lending_close,
+            label: t("financial_liabilities.form.lending_close"),
+            placeholder: "jj/mm/aaaa" %>
+
+      <%= f.text_field :lenders,
+            label: t("financial_liabilities.form.lenders"),
+            placeholder: "Ex: Banque Populaire, Crédit Agricole" %>
+
+      <%= f.select :collateral, [
+        [t("financial_liabilities.form.collateral_options.none"), ""],
+        [t("financial_liabilities.form.collateral_options.real_estate"), "real_estate"],
+        [t("financial_liabilities.form.collateral_options.inventory"), "inventory"],
+        [t("financial_liabilities.form.collateral_options.stocks"), "stocks"],
+        [t("financial_liabilities.form.collateral_options.materials"), "materials"],
+        [t("financial_liabilities.form.collateral_options.invoices"), "invoices"]
+      ],
+      {
+        label: t("financial_liabilities.form.collateral"),
+        prompt: "Sélectionnez le type de garantie"
+      },
+      data: {
+        action: "change->collateral#updateCollateral",
+        "collateral-target": "collateral"
+      } %>
+
+      <%= f.number_field :haircut,
+            label: t("financial_liabilities.form.haircut"),
+            step: 0.01,
+            placeholder: "Ex: 80 (pour 80%)",
+            data: {
+              action: "input->collateral#updateHaircut",
+              "collateral-target": "haircut"
+            } %>
+
+      <!-- Champ normal mais avec style pour décourager la saisie -->
+      <%= f.number_field :collateral_floor,
+            label: t("financial_liabilities.form.collateral_floor"),
+            step: 0.01,
+            style: "background-color: #f9fafb;",
+            placeholder: "Calculé automatiquement",
+            onfocus: "this.blur();",
+            data: {
+              "collateral-target": "floor"
+            } %>
+    </div>
+    <% end %>
+  </div>
+<% end %>
