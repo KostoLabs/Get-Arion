@@ -1,5 +1,4 @@
 require "active_support/core_ext/integer/time"
-require "dotenv/load"
 
 
 Rails.application.configure do
