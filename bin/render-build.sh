@@ -7,6 +7,9 @@ bundle install
 echo "Installing Node modules..."
 yarn install --frozen-lockfile
 
+echo "Installing JS dependencies..."
+yarn install
+
 echo "Building Tailwind CSS..."
 yarn build
 
