@@ -10,8 +10,6 @@ end
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# Charge le module Maybe (renommé Arion) depuis lib/
-require_relative "../lib/maybe"
 
 module Arion
   class Application < Rails::Application
