@@ -2,27 +2,23 @@ require_relative "boot"
 
 require "rails/all"
 
-if Rails.env.development? || Rails.env.test?
-  require "dotenv/load"
-end
+require "dotenv/load"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
 
 module Arion
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
 
-    # Ajout du dossier lib au chargement automatique (important pour production et rake tasks)
-    config.paths.add "lib", eager_load: true
-
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
+
+
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -34,15 +30,13 @@ module Arion
 
     config.active_job.queue_adapter = :good_job
 
-    # TODO: This is here for incremental adoption of localization.
-    # This can be removed when all translations are implemented.
+    # TODO: This is here for incremental adoption of localization.  This can be removed when all translations are implemented.
     config.i18n.fallbacks = true
     config.i18n.default_locale = :fr
-    config.i18n.available_locales = [:fr]
+    config.i18n.available_locales = [ :fr ]
 
-    config.app_mode = (
-      ENV["SELF_HOSTED"] == "true" || ENV["SELF_HOSTING_ENABLED"] == "true" ? "self_hosted" : "managed"
-    ).inquiry
+
+    config.app_mode = (ENV["SELF_HOSTED"] == "true" || ENV["SELF_HOSTING_ENABLED"] == "true" ? "self_hosted" : "managed").inquiry
 
     # Self hosters can optionally set their own encryption keys if they want to use ActiveRecord encryption.
     if Rails.application.credentials.active_record_encryption.present?
