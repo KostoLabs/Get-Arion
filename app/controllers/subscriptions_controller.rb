@@ -1,5 +1,4 @@
 class SubscriptionsController < ApplicationController
-  before_action :redirect_to_root_if_self_hosted
   before_action :ensure_stripe_customer!
 
   def new
