@@ -4,6 +4,12 @@ set -o errexit
 echo "Installing gems..."
 bundle install
 
+echo "Installing Node modules..."
+yarn install --frozen-lockfile
+
+echo "Building Tailwind CSS..."
+yarn build
+
 echo "Running database migrations..."
 bundle exec rails db:prepare
 
