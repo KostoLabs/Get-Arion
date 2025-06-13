@@ -1,5 +1,4 @@
 class SubscriptionsController < ApplicationController
-  before_action :ensure_stripe_customer!
 
   def new
     if Current.family.subscribed_to_premium? && Current.family.active_accounts_count > 2
