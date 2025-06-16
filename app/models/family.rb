@@ -188,8 +188,16 @@ class Family < ApplicationRecord
       "family",
       id,
       key,
-      entries.maximum(:updated_at)
+      entries_cache_timestamp
     ].compact.join("_")
+  end
+
+  def entries_cache_timestamp
+    @entries_cache_timestamp ||= entries.maximum(:updated_at)
+  end
+
+  def clear_entries_cache_timestamp!
+    @entries_cache_timestamp = nil
   end
 
   private

@@ -1,6 +1,8 @@
 class Account::Entry < ApplicationRecord
   include Monetizable, Provided
   after_save :update_account_balance_if_valuation
+  after_save :invalidate_family_cache_timestamp
+  after_destroy :invalidate_family_cache_timestamp
 
   monetize :amount
 
@@ -96,5 +98,9 @@ class Account::Entry < ApplicationRecord
     return unless account_valuation?
 
     account.update_column(:balance, amount)
+  end
+
+  def invalidate_family_cache_timestamp
+    account.family.clear_entries_cache_timestamp!
   end
 end
