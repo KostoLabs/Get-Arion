@@ -138,7 +138,14 @@ class Account < ApplicationRecord
     first_entry_date - 1.day
   end
 
+  after_commit :clear_family_account_cache
+
   private
+
+    def clear_family_account_cache
+      family.send(:clear_account_cache)
+    end
+
     def sync_balances
       strategy = linked? ? :reverse : :forward
       Balance::Syncer.new(self, strategy: strategy).sync_balances
