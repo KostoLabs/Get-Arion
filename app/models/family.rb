@@ -119,29 +119,29 @@ class Family < ApplicationRecord
   end
 
   def active_accounts_count
-    asset_count = accounts.active.assets.count
-    liability_count = accounts.active.liabilities.count
-    asset_count + liability_count
+    @active_accounts_count ||= active_accounts_breakdown.values.sum
   end
 
   def active_accounts_breakdown
-    {
-      asset: accounts.active.assets.count,
-      liability: accounts.active.liabilities.count
-    }
+    @active_accounts_breakdown ||= accounts.active
+      .group(:classification)
+      .count
+      .transform_keys(&:to_sym)
+      .reverse_merge(asset: 0, liability: 0)
   end
 
   # Peut ajouter un nouveau compte si pas au max
   def can_add_account?(classification = nil)
     if classification.nil?
-      # fallback pour compatibilité ancienne logique (on vérifie qu'au moins un des deux est possible)
-      return can_add_account?(:asset) || can_add_account?(:liability)
+      max_allowed = max_accounts_allowed
+      current_breakdown = active_accounts_breakdown
+      (current_breakdown[:asset] < max_allowed[:asset]) || 
+      (current_breakdown[:liability] < max_allowed[:liability])
+    else
+      max = max_accounts_allowed[classification.to_sym]
+      current = active_accounts_breakdown[classification.to_sym]
+      current < max
     end
-
-    max = max_accounts_allowed[classification.to_sym]
-    current = active_accounts_breakdown[classification.to_sym]
-
-    current < max
   end
 
   def account_limit_message(_classification = nil)
@@ -173,14 +173,19 @@ class Family < ApplicationRecord
   # end
 
   def requires_data_provider?
-    return true if trades.any?
-    return true if accounts.where.not(currency: self.currency).any?
-
-    uniq_currencies = entries.pluck(:currency).uniq
-    return true if uniq_currencies.count > 1
-    return true if uniq_currencies.count > 0 && uniq_currencies.first != self.currency
-
-    false
+    @requires_data_provider ||= begin
+      stats = Rails.cache.fetch(build_cache_key("data_provider_check"), expires_in: 1.hour) do
+        { has_trades: trades.exists?,
+          has_non_family_currency_accounts: accounts.where.not(currency: self.currency).exists?,
+          entry_currencies: entries.distinct.pluck(:currency) }
+      end
+      return true if stats[:has_trades]
+      return true if stats[:has_non_family_currency_accounts]
+      currencies = stats[:entry_currencies]
+      return true if currencies.count > 1
+      return true if currencies.count > 0 && currencies.first != self.currency
+      false
+    end
   end
 
   def build_cache_key(key)
@@ -193,6 +198,12 @@ class Family < ApplicationRecord
   end
 
   private
+
+    def clear_account_cache
+      @active_accounts_breakdown = nil
+      @active_accounts_count = nil
+      @requires_data_provider = nil
+    end
 
     def set_default_currency
       self.currency ||= "EUR"
