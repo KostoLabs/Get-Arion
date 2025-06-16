@@ -25,7 +25,7 @@ module AccountableResource
   def show
     @chart_view = params[:chart_view] || "balance"
     @q = params.fetch(:q, {}).permit(:search)
-    entries = @account.entries.search(@q).reverse_chronological
+    entries = @account.entries.includes(:entryable).search(@q).reverse_chronological
 
     set_focused_record(entries, params[:focused_record_id])
 
