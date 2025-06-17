@@ -86,7 +86,7 @@ module AccountableResource
     end
 
     def set_account
-      @account = Current.family.accounts.find(params[:id])
+      @account = Current.family.accounts.with_attached_logo.find(params[:id])
     end
 
     def account_params

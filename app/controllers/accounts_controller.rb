@@ -41,6 +41,6 @@ class AccountsController < ApplicationController
     end
 
     def set_account
-      @account = family.accounts.find(params[:id])
+      @account = family.accounts.with_attached_logo.find(params[:id])
     end
 end
