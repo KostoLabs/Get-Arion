@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_02_153003) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_19_204831) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -269,6 +269,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_153003) do
     t.string "stripe_premium_plan_id"
     t.string "stripe_premium_subscription_status"
     t.datetime "subscribed_at"
+    t.string "stripe_company_plan_id"
+    t.string "stripe_company_subscription_status"
   end
 
   create_table "financial_liabilities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

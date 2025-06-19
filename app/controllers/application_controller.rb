@@ -16,10 +16,16 @@ class ApplicationController < ActionController::Base
     return false if self_hosted?
     return false unless Current.session
     return false if Current.family.subscribed?
-    return false if subscription_pending? || request.path == settings_billing_path
-    return false if Current.family.active_accounts_count <= 3
+    return false if subscription_pending?
 
-    true
+    # Autorise l’accueil et la page abonnements
+    return false if request.path == settings_billing_path
+    return false if request.path == root_path || request.path == pages_dashboard_path
+
+    # Blocage uniquement si l'utilisateur ne peut plus rien ajouter
+    !Current.family.can_add_account?(:inventory) &&
+      !Current.family.can_add_account?(:financial_liability) &&
+      !Current.family.can_add_account?(:depository)
   end
 
   def subscription_pending?

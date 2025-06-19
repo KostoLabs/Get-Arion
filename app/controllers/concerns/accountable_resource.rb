@@ -6,6 +6,7 @@ module AccountableResource
 
     before_action :set_account, only: [ :show, :edit, :update, :destroy ]
     before_action :set_link_token, only: :new
+    before_action :ensure_account_limit_respected!, only: [:new, :create]
   end
 
   class_methods do
@@ -16,6 +17,12 @@ module AccountableResource
   end
 
   def new
+    unless Current.family.can_add_account?(accountable_type.name.underscore)
+      redirect_to settings_billing_path,
+                  alert: Current.family.account_limit_message(accountable_type.name.underscore),
+                  status: :see_other and return
+    end
+
     @account = Current.family.accounts.build(
       currency: Current.family.currency,
       accountable: accountable_type.new
@@ -51,6 +58,27 @@ module AccountableResource
   end
 
   private
+
+    def ensure_account_limit_respected!
+      type =
+        case accountable_type.name
+        when "Inventory"
+          :inventory
+        when "FinancialLiability"
+          :financial_liability
+        when "BankAccount", "Depository", "DepositoryAccount"
+          :depository
+        else
+          nil
+        end
+
+      # 🚨 Ne bloque que si le type est reconnu et dépasse la limite
+      if type.present? && !Current.family.can_add_account?(type)
+        redirect_to settings_billing_path, alert: Current.family.account_limit_message(type)
+      end
+    end
+
+
     def set_link_token
       @us_link_token = Current.family.get_link_token(
         webhooks_url: plaid_us_webhooks_url,

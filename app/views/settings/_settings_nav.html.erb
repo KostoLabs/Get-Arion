@@ -1,10 +1,10 @@
 <div class="space-y-4">
   <div class="flex items-center gap-2 p-1.5">
-    <%= link_to previous_path, class: "flex items-center gap-1 text-primary font-medium text-sm" do %>
+    <%= link_to root_path, class: "flex items-center gap-1 text-primary font-medium text-sm" do %>
       <%= lucide_icon "chevron-left", class: "w-5 h-5 text-secondary" %>
       <span><%= t(".back") %></span>
     <% end %>
-    <%= link_to previous_path, class: "uppercase bg-gray-100 rounded-sm px-1 py-0.5 text-xs text-secondary shadow-sm ml-1 pointer-events-none", data: { controller: "hotkey", hotkey: "Escape" } do %>
+    <%= link_to root_path, class: "uppercase bg-gray-100 rounded-sm px-1 py-0.5 text-xs text-secondary shadow-sm ml-1 pointer-events-none", data: { controller: "hotkey", hotkey: "Escape" } do %>
       esc
     <% end %>
   </div>

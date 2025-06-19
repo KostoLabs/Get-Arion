@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   resource :subscription, only: [:new, :show] do
     get :success
     get :upgrade
+    get :enterprise
   end
 
   resources :tags, except: :show do

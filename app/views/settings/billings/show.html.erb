@@ -8,3 +8,6 @@
   <%= render "settings/billings/subscription_card", type: :premium %>
 <% end %>
 
+<%= settings_section title: t(".subscription_enterprise_title"), subtitle: t(".subscription_enterprise_subtitle") do %>
+  <%= render "settings/billings/subscription_card", type: :enterprise %>
+<% end %>
