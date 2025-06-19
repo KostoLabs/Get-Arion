@@ -135,7 +135,7 @@ class Family < ApplicationRecord
     if classification.nil?
       max_allowed = max_accounts_allowed
       current_breakdown = active_accounts_breakdown
-      (current_breakdown[:asset] < max_allowed[:asset]) || 
+      (current_breakdown[:asset] < max_allowed[:asset]) ||
       (current_breakdown[:liability] < max_allowed[:liability])
     else
       max = max_accounts_allowed[classification.to_sym]
@@ -181,9 +181,11 @@ class Family < ApplicationRecord
       end
       return true if stats[:has_trades]
       return true if stats[:has_non_family_currency_accounts]
+
       currencies = stats[:entry_currencies]
       return true if currencies.count > 1
       return true if currencies.count > 0 && currencies.first != self.currency
+
       false
     end
   end
