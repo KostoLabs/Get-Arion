@@ -1,0 +1,37 @@
+# Fichiers d'environnement
+.env
+.env.*
+
+# Fichiers de log et temporaires
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Par défaut, Rails ignore les fichiers de PID
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Fichiers de cache et compilés
+/public/assets
+/public/packs
+/public/packs-test
+/public/*.map
+/public/*.js
+/node_modules
+/yarn-error.log
+.byebug_history
+
+# Stockage local (Active Storage)
+/storage/*
+!/storage/.keep
+
+# JetBrains / VSCode / autres éditeurs
+.idea/
+.vscode/
+*.swp
+*~
+
+# Systèmes
+.DS_Store
