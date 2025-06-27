@@ -1,11 +1,10 @@
-@import "tailwindcss/preflight";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* @import 'tailwindcss'; */
 
 @import "./arion-design-system.css";
-
 @import "./geist-font.css";
 @import "./geist-mono-font.css";
 
