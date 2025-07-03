@@ -4,6 +4,7 @@
   "description": "The OS for your personal finances",
   "scripts": {
     "build": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "postinstall": "yarn build",
     "style:check": "biome check",
     "style:fix": "biome check --write",
     "lint": "biome lint",
