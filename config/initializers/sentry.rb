@@ -5,15 +5,15 @@ if ENV["SENTRY_DSN"].present?
     config.breadcrumbs_logger = [ :active_support_logger, :http_logger ]
     config.enabled_environments = %w[production]
 
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    config.traces_sample_rate = 0.25
-
-    # Set profiles_sample_rate to profile 100%
-    # of sampled transactions.
-    # We recommend adjusting this value in production.
-    config.profiles_sample_rate = 0.25
+    # Use traces_sampler to dynamically set the sample rate
+    # and exclude ActionCable connections from profiling.
+    config.traces_sampler = lambda do |context|
+      if context[:transaction_context][:name] == "GET /cable"
+        0.0
+      else
+        0.25
+      end
+    end
 
     config.profiler_class = Sentry::Vernier::Profiler
   end
