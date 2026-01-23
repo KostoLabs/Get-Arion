@@ -21,17 +21,21 @@ class UsersController < ApplicationController
       corporate_data = corporate_params.to_h.compact
         if corporate_data.present?
           corporate = Current.family.corporate || Current.family.build_corporate
-          corporate.assign_attributes(
-            user: @user,
-            siren: corporate_data[:siren],
-            name: corporate_data[:company_name],
-            address: corporate_data[:company_address],
-            postal_code: corporate_data[:company_postal_code],
-            city: corporate_data[:company_city],
-            naf: corporate_data[:company_naf],
-            creation_date: corporate_data[:company_creation_date]
-          )
-          corporate.save!
+          if corporate.persisted? && corporate_data[:siren].blank?
+            Rails.logger.warn "Skipping corporate update - siren field cannot be blank for existing record"
+          else
+            corporate.assign_attributes(
+              user: @user,
+              siren: corporate_data[:siren],
+              name: corporate_data[:company_name],
+              address: corporate_data[:company_address],
+              postal_code: corporate_data[:company_postal_code],
+              city: corporate_data[:company_city],
+              naf: corporate_data[:company_naf],
+              creation_date: corporate_data[:company_creation_date]
+            )
+            corporate.save!
+          end
         end
       @user.profile_image.purge if should_purge_profile_image?
 
