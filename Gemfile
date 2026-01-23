@@ -1,90 +1,92 @@
 source "https://rubygems.org"
 
-ruby file: ".ruby-version"
+ruby "3.4.1"
 
-# Rails
+# Core Rails gems
 gem "rails", "~> 7.2.2"
-
-# Drivers
 gem "pg", "~> 1.5"
-
-# Deployment
 gem "puma", ">= 5.0"
-gem "bootsnap", require: false
 
 # Assets
-gem "importmap-rails"
 gem "propshaft"
-gem "tailwindcss-rails"
-gem "lucide-rails", github: "maybe-finance/lucide-rails"
-
-# Hotwire
+gem "importmap-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 
-# Temporary pin to commit to fix crypto.randomUUID() errors.  Revert this when the change has been released.
-gem "hotwire_combobox", github: "josefarias/hotwire_combobox", ref: "b827048a8305e1115d5f96931ba1c9750d1e59fc"
+# CSS framework - downgraded to fix compatibility issue
+gem "tailwindcss-rails", "~> 2.0.31"
 
-# Background Jobs
+# Job processing
 gem "good_job"
 
-# Error logging
-gem "vernier"
-gem "rack-mini-profiler"
-gem "sentry-ruby"
-gem "sentry-rails"
-gem "logtail-rails"
-
-# Active Storage
-gem "aws-sdk-s3", "~> 1.177.0", require: false
-gem "image_processing", ">= 1.2"
-
-# Other
+# Authentication
 gem "bcrypt", "~> 3.1"
-gem "jwt"
-gem "faraday"
-gem "faraday-retry"
-gem "faraday-multipart"
-gem "inline_svg"
-gem "octokit"
-gem "pagy"
+
+# Settings
 gem "rails-settings-cached"
-gem "tzinfo-data", platforms: %i[windows jruby]
-gem "csv"
+
+# Utilities
+gem "bootsnap", require: false
+gem "image_processing", ">= 1.2"
+gem "pagy"
+gem "chartkick"
 gem "redcarpet"
+gem "inline_svg"
+gem "csv"
+gem "i18n-js"
+
+# External integrations
 gem "stripe"
-gem "intercom-rails"
 gem "plaid"
+gem "aws-sdk-s3", "~> 1.177.0"
+gem "faraday"
+gem "faraday-multipart"
+gem "faraday-retry"
+gem "httparty"
+gem "jwt"
+gem "octokit"
+
+# Monitoring and analytics
+gem "sentry-rails"
+gem "sentry-ruby"
+gem "logtail-rails"
+gem "intercom-rails"
+
+# QR codes and TOTP
 gem "rotp", "~> 6.3"
 gem "rqrcode", "~> 2.2"
-gem "i18n-js"
-gem "httparty"
-gem "chartkick"
+
+# Git-based gems
+gem "hotwire_combobox", git: "https://github.com/josefarias/hotwire_combobox.git", ref: "b827048a8305e1115d5f96931ba1c9750d1e59fc"
+gem "lucide-rails", git: "https://github.com/maybe-finance/lucide-rails.git", revision: "272e5fb8418ea458da3995d6abe0ba0ceee9c9f0"
 
 group :development, :test do
-  gem "debug", platforms: %i[mri windows]
-  gem "brakeman", require: false
-  gem "rubocop-rails-omakase", require: false
-  gem "i18n-tasks"
-  gem "erb_lint"
+  gem "debug"
   gem "dotenv-rails"
+  gem "faker"
+  gem "brakeman"
+  gem "rubocop-rails-omakase"
+  gem "erb_lint"
+  gem "mocha"
+  gem "simplecov"
+  gem "vcr"
+  gem "webmock"
+  gem "capybara"
+  gem "selenium-webdriver"
 end
 
 group :development do
+  gem "web-console"
   gem "hotwire-livereload"
   gem "letter_opener"
+  gem "rack-mini-profiler"
   gem "ruby-lsp-rails"
-  gem "web-console"
-  gem "faker"
+  gem "i18n-tasks"
   gem "benchmark-ips"
+  gem "vernier"
+  gem "climate_control"
 end
 
-group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "mocha"
-  gem "vcr"
-  gem "webmock"
-  gem "climate_control"
-  gem "simplecov", require: false
+group :windows do
+  gem "tzinfo-data"
 end
